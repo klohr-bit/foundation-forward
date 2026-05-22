@@ -7,20 +7,25 @@
   <meta name="description" content="Let's get your business working without you. The Foundation Build turns the way you already work into a system your team can run." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Epilogue:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink:       #0e0e0e;
-      --paper:     #efeae0;
-      --paper-2:   #e6e0d2;
-      --gray:      #5e5b54;
-      --mid:       #908a7e;
-      --rule:      #0e0e0e;
-      --rule-soft: #c1b9a8;
-      --gold:      #c9a84c;
-      --gutter:    clamp(1.25rem, 4vw, 4rem);
-      --rail:      clamp(2rem, 5vw, 4.5rem);
-      --col:       640px;
+      --ink:        #1a1a1a;
+      --paper:      #f6f1e7;
+      --paper-2:    #ece5d4;
+      --panel:      #ffffff;
+      --gray:       #5b574e;
+      --mid:        #8e8676;
+      --gold:       #c9a84c;
+      --gold-deep:  #a88a3c;
+      --green:      #2d6a4f;
+      --rule:       #1a1a1a;
+      --rule-soft:  #d4cdb9;
+      --radius-lg:  28px;
+      --radius-md:  18px;
+      --radius-sm:  10px;
+      --gutter:     clamp(1.25rem, 3.5vw, 3rem);
+      --maxw:       1180px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,210 +34,355 @@
     body {
       background: var(--paper);
       color: var(--ink);
-      font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
-      font-size: 18px;
-      line-height: 1.55;
+      font-family: 'Epilogue', system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      overflow-x: hidden;
     }
 
     ::selection { background: var(--ink); color: var(--paper); }
 
-    a { color: inherit; text-underline-offset: 5px; }
+    a { color: inherit; }
     img { display: block; max-width: 100%; }
 
-    /* ── PAGE FRAME ── */
-    .page {
-      max-width: 1180px;
+    .wrap {
+      max-width: var(--maxw);
       margin: 0 auto;
       padding: 0 var(--gutter);
     }
 
-    /* ── MASTHEAD ── */
-    .masthead {
-      padding: 1.75rem 0 1.25rem;
-      border-bottom: 1px solid var(--rule);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 1rem;
-      align-items: baseline;
+    /* ── HEADLINES / DISPLAY ── */
+    .display, h1, h2, h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--ink);
     }
 
-    .byline {
-      font-family: 'Playfair Display', serif;
+    /* the italic green emphasis word — the brand "tell" */
+    .accent {
       font-style: italic;
       font-weight: 500;
-      font-size: 1rem;
-      letter-spacing: 0;
+      color: var(--green);
     }
-    .byline a { text-decoration: none; }
 
-    .masthead-mail {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 0.95rem;
+    /* ── PILL CTA ── */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: var(--gold);
       color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 1px;
-    }
-    .masthead-mail:hover { color: var(--gray); border-bottom-color: var(--gray); }
-
-    /* ── BODY GRID with left rail for §-marks ── */
-    .grid {
-      display: grid;
-      grid-template-columns: var(--rail) minmax(0, var(--col)) 1fr;
-      column-gap: clamp(1rem, 3vw, 3rem);
-      align-items: start;
-    }
-
-    .mark {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 0.78rem;
+      padding: 0.95rem 1.85rem;
+      border-radius: 999px;
+      font-family: 'Epilogue', sans-serif;
+      font-weight: 600;
+      font-size: 0.84rem;
       letter-spacing: 0.04em;
-      color: var(--mid);
-      padding-top: 0.6rem;
-      white-space: nowrap;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.08s ease;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+    }
+    .pill:hover { background: var(--gold-deep); color: var(--paper); }
+    .pill:active { transform: translateY(1px); }
+
+    .pill-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+      box-shadow: none;
+    }
+    .pill-ghost:hover { background: var(--ink); color: var(--paper); }
+
+    .arrow {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    .pill:hover .arrow { transform: translateX(3px); }
+
+    /* ── NAV ── */
+    nav {
+      padding: 1.25rem 0;
     }
 
-    .col { grid-column: 2; min-width: 0; }
-    .col-wide { grid-column: 2 / 4; min-width: 0; }
+    nav .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .logo .mark {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--green);
+      position: relative;
+    }
+    .logo .mark::after {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border-radius: 999px;
+      background: var(--gold);
+    }
+
+    .logo span.italic { font-style: italic; font-weight: 500; color: var(--green); }
+
+    .nav-cta { padding: 0.75rem 1.4rem; font-size: 0.78rem; }
 
     /* ── HERO ── */
-    .hero {
-      padding: 5.5rem 0 6rem;
-      border-bottom: 1px solid var(--rule);
+    .hero { padding: 3.5rem 0 5.5rem; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
     }
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(3rem, 9.5vw, 8.5rem);
-      line-height: 0.96;
-      letter-spacing: -0.03em;
+      font-weight: 600;
+      font-size: clamp(2.6rem, 5.8vw, 5rem);
+      line-height: 1.04;
+      letter-spacing: -0.02em;
       color: var(--ink);
-      margin-bottom: 3rem;
-      max-width: 12ch;
-    }
-
-    .hero h1 i {
-      font-style: italic;
-      font-weight: 500;
-      display: block;
-      padding-left: 1.5ch;
+      margin-bottom: 1.75rem;
+      max-width: 14ch;
     }
 
     .hero-deck {
+      font-family: 'Epilogue', sans-serif;
+      font-size: clamp(1rem, 1.2vw, 1.1rem);
+      line-height: 1.65;
+      color: var(--gray);
+      max-width: 44ch;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-credibility {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--rule-soft);
+      max-width: 32rem;
+    }
+
+    .cred-stack {
+      display: flex;
+      align-items: center;
+    }
+
+    .cred-stack .ring {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 2px solid var(--paper);
+      margin-left: -10px;
+      background: var(--paper-2);
+      display: grid;
+      place-items: center;
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-weight: 400;
-      font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+    .cred-stack .ring:first-child { margin-left: 0; }
+    .cred-stack .ring.green { background: var(--green); color: var(--paper); }
+    .cred-stack .ring.gold { background: var(--gold); color: var(--ink); }
+    .cred-stack .ring.ink  { background: var(--ink); color: var(--paper); }
+
+    .cred-text {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.85rem;
+      color: var(--gray);
       line-height: 1.45;
-      color: var(--ink);
-      max-width: 38ch;
-      margin-bottom: 2.5rem;
+      max-width: 28ch;
     }
 
-    .hero-email {
+    .hero-photo-wrap {
+      position: relative;
+    }
+
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 18%;
+      border-radius: var(--radius-lg);
+      filter: saturate(1.04) contrast(1.02);
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: -22px;
+      left: -22px;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-md);
+      max-width: 220px;
+      box-shadow: 0 12px 28px rgba(26,26,26,0.08);
+    }
+
+    .hero-badge .num {
       font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 3px;
-    }
-    .hero-email:hover { color: var(--gray); border-bottom-color: var(--gray); }
-
-    /* ── BAND (the poster line) ── */
-    .band {
-      padding: clamp(3rem, 9vw, 7rem) 0 clamp(3rem, 9vw, 7rem);
-      border-bottom: 1px solid var(--rule);
+      font-weight: 700;
+      font-size: 2.4rem;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      display: block;
+      margin-bottom: 0.35rem;
     }
 
-    .band-1, .band-2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 10vw, 9rem);
-      line-height: 0.94;
-      letter-spacing: -0.035em;
-      color: var(--ink);
-    }
-
-    .band-1 { font-weight: 700; }
-    .band-2 {
-      font-style: italic;
+    .hero-badge .label {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.72rem;
       font-weight: 500;
-      padding-left: clamp(1rem, 6vw, 5rem);
-      margin-top: clamp(0.4rem, 1vw, 0.8rem);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      line-height: 1.4;
     }
 
-    /* ── SECTION DEFAULTS ── */
-    section { padding: clamp(4rem, 8vw, 6.5rem) 0; border-bottom: 1px solid var(--rule); }
+    /* ── BAND ── */
+    .band {
+      padding: clamp(4rem, 8vw, 6.5rem) 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      background: var(--paper-2);
+    }
+
+    .band-line {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.85rem, 4vw, 3.25rem);
+      line-height: 1.18;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      max-width: 28ch;
+    }
+
+    .band-line .accent { font-style: italic; font-weight: 500; color: var(--green); display: block; }
+
+    /* ── SECTION ── */
+    section { padding: clamp(4rem, 7vw, 6rem) 0; }
+
+    .eyebrow {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 14px;
+      height: 1.5px;
+      background: var(--green);
+      display: block;
+    }
 
     h2 {
       font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      line-height: 1.02;
-      letter-spacing: -0.025em;
-      color: var(--ink);
+      font-weight: 600;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: -0.018em;
+      max-width: 22ch;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 .accent { color: var(--green); }
+
+    .lede {
+      font-family: 'Epilogue', sans-serif;
+      font-size: clamp(1rem, 1.25vw, 1.15rem);
+      line-height: 1.65;
+      color: var(--gray);
+      max-width: 52ch;
+      margin-bottom: 2.5rem;
     }
 
     /* ── PROBLEM ── */
+    .problem-card {
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      padding: clamp(2rem, 4vw, 3.5rem);
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      align-items: center;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+    }
+
     .pull {
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-weight: 400;
-      font-size: clamp(1.3rem, 2.3vw, 1.8rem);
-      line-height: 1.4;
+      font-size: clamp(1.2rem, 1.9vw, 1.55rem);
+      line-height: 1.45;
       color: var(--ink);
-      margin-bottom: 1.5rem;
-      max-width: 38ch;
+      margin-bottom: 1.25rem;
     }
 
     .pull-attr {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.78rem;
       font-weight: 500;
-      font-size: 0.82rem;
-      letter-spacing: 0.01em;
+      letter-spacing: 0.04em;
       color: var(--mid);
-      margin-bottom: 4rem;
     }
 
-    .prose p {
-      font-family: 'Playfair Display', serif;
-      font-weight: 400;
-      font-size: clamp(1.05rem, 1.5vw, 1.3rem);
-      line-height: 1.55;
+    .problem-body p {
+      font-size: 1.05rem;
+      line-height: 1.65;
       color: var(--ink);
-      margin-bottom: 1.15rem;
-      max-width: 38ch;
+      margin-bottom: 1rem;
     }
 
-    .prose p:last-child { margin-bottom: 0; }
-
-    .kicker {
+    .problem-kicker {
       font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 500;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      line-height: 1.15;
-      letter-spacing: -0.015em;
+      font-weight: 600;
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
       color: var(--ink);
-      margin-top: 3.5rem;
-      padding-top: 3rem;
-      border-top: 1px solid var(--rule);
-      max-width: 22ch;
+      margin-top: 1.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--rule-soft);
+      max-width: 24ch;
     }
+    .problem-kicker .accent { color: var(--green); }
 
-    .kicker i { font-style: normal; font-weight: 700; }
+    /* ── AUDIT ── */
+    .audit-wrap { padding: clamp(4rem, 7vw, 6rem) 0; }
 
-    /* ── AUDIT (the tool) ── */
-    .audit-wrap {
-      background: var(--paper-2);
-      border-bottom: 1px solid var(--rule);
+    .audit-card {
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      padding: clamp(2rem, 4vw, 3.5rem);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
     }
 
     .audit-head {
@@ -246,91 +396,95 @@
 
     .audit-h2 {
       font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(2rem, 4.5vw, 3.4rem);
-      line-height: 1.04;
-      letter-spacing: -0.025em;
+      font-weight: 600;
+      font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+      line-height: 1.08;
+      letter-spacing: -0.015em;
       color: var(--ink);
-      max-width: 18ch;
+      max-width: 20ch;
+      margin: 0;
     }
+    .audit-h2 .accent { color: var(--green); }
 
     .audit-counter {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 0.95rem;
-      color: var(--gray);
-      font-variant-numeric: tabular-nums;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mid);
       white-space: nowrap;
+      font-variant-numeric: tabular-nums;
     }
-
-    .audit-counter strong { font-style: normal; font-weight: 700; color: var(--ink); }
+    .audit-counter strong { font-weight: 700; color: var(--ink); }
 
     .audit-sub {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+      font-family: 'Epilogue', sans-serif;
+      font-size: 1rem;
       color: var(--gray);
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
       max-width: 50ch;
     }
 
-    .audit-list { list-style: none; border-top: 1px solid var(--rule); }
+    .audit-list { list-style: none; border-top: 1px solid var(--rule-soft); }
 
     .audit-item {
       display: grid;
-      grid-template-columns: 62px 1fr;
-      gap: 1.5rem;
+      grid-template-columns: 36px 1fr;
+      gap: 1.25rem;
       align-items: start;
-      padding: 1.85rem 0;
+      padding: 1.4rem 0;
       border-bottom: 1px solid var(--rule-soft);
       cursor: pointer;
-      transition: background 0.18s ease;
+      transition: padding-left 0.2s ease;
     }
 
-    .audit-item:hover { background: rgba(255,253,247,0.45); }
-    .audit-item:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
+    .audit-item:hover { padding-left: 0.5rem; }
+    .audit-item:focus-visible { outline: 2px solid var(--green); outline-offset: 6px; border-radius: 4px; }
 
     .audit-box {
-      width: 30px;
-      height: 30px;
-      margin-top: 6px;
+      width: 28px;
+      height: 28px;
+      margin-top: 2px;
       border: 1.5px solid var(--ink);
+      border-radius: 8px;
       background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s ease;
+      transition: background 0.18s ease, border-color 0.18s ease;
     }
 
     .audit-box svg {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       opacity: 0;
       transform: scale(0.7);
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      transition: opacity 0.18s ease, transform 0.18s ease;
     }
 
-    .audit-item.checked .audit-box { background: var(--gold); border-color: var(--gold); }
+    .audit-item.checked .audit-box {
+      background: var(--green);
+      border-color: var(--green);
+    }
     .audit-item.checked .audit-box svg { opacity: 1; transform: scale(1); }
 
     .audit-text strong {
       font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(1.2rem, 1.9vw, 1.55rem);
-      line-height: 1.22;
-      letter-spacing: -0.01em;
+      font-weight: 600;
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+      line-height: 1.3;
+      letter-spacing: -0.005em;
       color: var(--ink);
       display: block;
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.3rem;
     }
 
     .audit-text span {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 1.02rem;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.95rem;
       color: var(--gray);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .audit-item.checked .audit-text strong {
@@ -340,9 +494,10 @@
     }
 
     .audit-summary {
-      margin-top: 3rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--rule);
+      margin-top: 2.5rem;
+      padding: 2rem;
+      background: var(--paper-2);
+      border-radius: var(--radius-md);
       opacity: 0;
       transform: translateY(6px);
       transition: opacity 0.3s ease, transform 0.3s ease;
@@ -351,306 +506,334 @@
 
     .audit-summary p {
       font-family: 'Playfair Display', serif;
-      font-style: italic;
       font-weight: 500;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      line-height: 1.25;
-      letter-spacing: -0.012em;
-      color: var(--ink);
-      margin-bottom: 2rem;
-      max-width: 26ch;
-    }
-
-    .audit-cta {
-      font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-weight: 500;
-      font-size: 1.1rem;
+      font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+      line-height: 1.35;
       color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 3px;
+      margin-bottom: 1.25rem;
+      max-width: 38ch;
     }
-    .audit-cta:hover { color: var(--gray); border-bottom-color: var(--gray); }
 
     /* ── OFFER ── */
-    .offer h2 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      margin-bottom: 2rem;
-      max-width: 14ch;
+    .offer-card {
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      padding: clamp(2.25rem, 4vw, 3.75rem);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      align-items: start;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
     }
 
-    .offer h2 em { font-style: italic; font-weight: 500; }
+    .checklist {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
 
-    .lead {
+    .checklist li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 0.85rem;
+      align-items: start;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .checklist li:last-child { border-bottom: 0; }
+
+    .checklist .tick {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--green);
+      display: grid;
+      place-items: center;
+      margin-top: 3px;
+    }
+
+    .checklist .tick svg { width: 13px; height: 13px; }
+
+    .checklist strong {
       font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(1.2rem, 1.9vw, 1.55rem);
-      line-height: 1.45;
+      font-weight: 600;
+      font-size: 1.15rem;
+      line-height: 1.25;
+      letter-spacing: -0.005em;
       color: var(--ink);
-      max-width: 42ch;
-      margin-bottom: 3rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid var(--rule);
+      display: block;
+      margin-bottom: 0.2rem;
     }
 
-    .offer-list p {
-      font-family: 'Playfair Display', serif;
-      font-weight: 400;
-      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
-      line-height: 1.55;
-      color: var(--ink);
-      margin-bottom: 1.2rem;
-      max-width: 42ch;
-    }
-
-    .offer-list p.aside {
-      font-style: italic;
+    .checklist span {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.95rem;
       color: var(--gray);
-      font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+      line-height: 1.55;
     }
 
-    .offer-list p:last-child {
-      margin-top: 2.25rem;
-      padding-top: 2.25rem;
+    .offer-foot {
+      margin-top: 2rem;
+      padding-top: 2rem;
       border-top: 1px solid var(--rule-soft);
-      font-weight: 700;
-      font-size: clamp(1.3rem, 2vw, 1.65rem);
-      margin-bottom: 0;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.35rem;
       letter-spacing: -0.01em;
+      color: var(--ink);
     }
 
     /* ── WHO ── */
-    .who h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(1.8rem, 3.3vw, 2.6rem);
-      line-height: 1.18;
-      color: var(--ink);
-      max-width: 32ch;
-      margin-bottom: 4rem;
-      letter-spacing: -0.01em;
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin-bottom: 3.5rem;
     }
 
-    .who-list {
+    .who-card {
+      background: var(--panel);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      min-height: 140px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+      transition: transform 0.15s ease;
+    }
+    .who-card:hover { transform: translateY(-3px); }
+
+    .who-card .num {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-weight: 400;
-      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
-      line-height: 1.55;
-      color: var(--ink);
-      margin-bottom: 5rem;
+      font-size: 1rem;
+      color: var(--green);
+    }
+
+    .who-card .name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      line-height: 1.2;
       letter-spacing: -0.005em;
+      color: var(--ink);
+      margin-top: auto;
     }
 
-    .who-list .sep {
-      font-style: normal;
-      color: var(--mid);
-      margin: 0 0.5rem;
-    }
-
-    /* The asymmetric breakout — bleeds right of the column */
     .who-kicker {
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-weight: 500;
-      font-size: clamp(2.2rem, 6.5vw, 5.5rem);
-      line-height: 1.02;
-      letter-spacing: -0.025em;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
       color: var(--ink);
-      max-width: 22ch;
-      text-align: right;
+      max-width: 26ch;
       margin-left: auto;
-      padding-top: 3.5rem;
-      border-top: 1px solid var(--rule);
+      text-align: right;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--rule-soft);
     }
 
     /* ── HOW ── */
-    .step {
-      padding: clamp(2.5rem, 5vw, 4rem) 0;
-      border-top: 1px solid var(--rule-soft);
-      max-width: 42ch;
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
 
-    .step:first-of-type { border-top: 1px solid var(--rule); }
+    .how-card {
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+    }
 
-    .step h3 {
+    .how-num {
       font-family: 'Playfair Display', serif;
-      font-weight: 700;
       font-style: italic;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      line-height: 0.98;
-      letter-spacing: -0.03em;
-      color: var(--ink);
-      margin-bottom: 1.5rem;
+      font-weight: 500;
+      font-size: 2.4rem;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 1.25rem;
     }
 
-    .step p {
+    .how-card h3 {
       font-family: 'Playfair Display', serif;
-      font-weight: 400;
-      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
-      line-height: 1.6;
+      font-weight: 600;
+      font-size: 1.55rem;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.85rem;
       color: var(--ink);
+    }
+
+    .how-card p {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--gray);
     }
 
     /* ── PRACTICE ── */
+    .practice-card {
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      padding: clamp(2rem, 4vw, 3.5rem);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+    }
+
     .practice-body {
       font-family: 'Playfair Display', serif;
       font-weight: 400;
-      font-size: clamp(1.25rem, 2vw, 1.6rem);
+      font-size: clamp(1.15rem, 1.6vw, 1.4rem);
       line-height: 1.5;
       color: var(--ink);
-      max-width: 42ch;
-      margin-bottom: 2.5rem;
+      max-width: 56ch;
+      margin-bottom: 2rem;
     }
 
     .practice-kicker {
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-weight: 500;
-      font-size: clamp(2rem, 5vw, 3.75rem);
-      line-height: 1.05;
-      letter-spacing: -0.025em;
-      color: var(--ink);
-      margin-bottom: 3rem;
-      max-width: 18ch;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--green);
+      margin-bottom: 2.5rem;
+      max-width: 20ch;
     }
 
     .practice-meta {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
       gap: 1.5rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--rule);
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--rule-soft);
       flex-wrap: wrap;
     }
 
     .practice-caption {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.78rem;
       font-weight: 500;
-      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       color: var(--mid);
     }
 
     .practice-link {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--ink);
+      font-family: 'Epilogue', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      color: var(--green);
       text-decoration: none;
-      border-bottom: 1px solid var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-bottom: 1.5px solid var(--green);
       padding-bottom: 2px;
     }
-    .practice-link:hover { color: var(--gray); border-bottom-color: var(--gray); }
 
     /* ── ABOUT ── */
     .about-grid {
       display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 4.5rem;
-      align-items: start;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
     }
 
     .about-photo {
       width: 100%;
       aspect-ratio: 4 / 5;
       object-fit: cover;
-      object-position: center top;
-      filter: grayscale(0.45) contrast(1.0);
+      object-position: center 22%;
+      border-radius: var(--radius-lg);
+      filter: saturate(1.0) contrast(1.02);
     }
 
-    .about h2 {
-      font-size: clamp(2.5rem, 5vw, 3.75rem);
-      margin-bottom: 0.4rem;
-      letter-spacing: -0.025em;
-    }
-
-    .about h2 em { font-style: italic; font-weight: 500; }
+    .about h2 { margin-bottom: 0.5rem; }
+    .about h2 .accent { color: var(--green); font-weight: 500; }
 
     .about-role {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 0.92rem;
-      color: var(--mid);
-      margin-bottom: 3rem;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 2rem;
     }
 
     .about-body p {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--gray);
+      margin-bottom: 1.1rem;
+    }
+    .about-body p:last-child { margin-bottom: 0; color: var(--ink); }
+    .about-body em {
       font-family: 'Playfair Display', serif;
-      font-weight: 400;
-      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
-      line-height: 1.6;
-      color: var(--ink);
-      margin-bottom: 1.25rem;
-      max-width: 42ch;
+      font-style: italic;
+      color: var(--green);
+      font-size: 1.1rem;
     }
 
-    .about-body p:last-child { margin-bottom: 0; }
-    .about-body em { font-style: italic; }
-
-    /* ── CLOSING (the second poster moment) ── */
+    /* ── CLOSING ── */
     .closing {
-      padding: clamp(5rem, 10vw, 9rem) 0 clamp(3rem, 6vw, 5rem);
-      border-bottom: 1px solid var(--rule);
+      padding: clamp(5rem, 9vw, 7.5rem) 0 clamp(3rem, 6vw, 5rem);
+      text-align: center;
     }
 
     .closing h2 {
       font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(3rem, 11vw, 10rem);
-      line-height: 0.94;
-      letter-spacing: -0.035em;
-      color: var(--ink);
-      margin-bottom: 2rem;
-      max-width: 12ch;
+      font-weight: 600;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0 auto 1.5rem;
+      max-width: 18ch;
     }
 
-    .closing h2 i {
-      font-style: italic;
-      font-weight: 500;
-    }
+    .closing h2 .accent { color: var(--green); font-weight: 500; }
 
     .closing p {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(1.25rem, 2vw, 1.6rem);
+      font-family: 'Epilogue', sans-serif;
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
       color: var(--gray);
-      margin-bottom: 3.5rem;
-      max-width: 30ch;
+      margin: 0 auto 2.5rem;
+      max-width: 38ch;
     }
 
-    .closing-email {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 500;
-      font-size: clamp(1.65rem, 4.5vw, 3.5rem);
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1.5px solid var(--ink);
-      padding-bottom: 6px;
-      letter-spacing: -0.01em;
-    }
-    .closing-email:hover { color: var(--gray); border-bottom-color: var(--gray); }
+    .closing .pill { padding: 1.1rem 2.25rem; font-size: 0.9rem; }
 
     /* ── FOOTER ── */
     footer {
-      padding: 1.75rem 0 2.5rem;
+      padding: 2.25rem 0 2.5rem;
+      border-top: 1px solid var(--rule-soft);
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       gap: 1rem;
       flex-wrap: wrap;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 0.85rem;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.78rem;
       color: var(--mid);
+      letter-spacing: 0.04em;
     }
 
-    footer .foot-left { color: var(--ink); font-weight: 500; }
+    footer .foot-left {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
 
     footer a {
       color: var(--mid);
@@ -661,98 +844,116 @@
     footer a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 720px) {
-      :root {
-        --gutter: 1.25rem;
-        --rail:   1.5rem;
+    @media (max-width: 880px) {
+      .hero { padding: 2rem 0 4rem; }
+
+      .hero-grid,
+      .about-grid,
+      .problem-card,
+      .offer-card {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
       }
-      body { font-size: 17px; }
 
-      .grid {
-        grid-template-columns: var(--rail) 1fr;
-      }
-      .col, .col-wide { grid-column: 2; }
-      .mark { padding-top: 0.4rem; font-size: 0.72rem; }
+      .problem-card, .offer-card { padding: 1.75rem; }
 
-      .masthead { padding: 1.25rem 0 0.9rem; }
-      .masthead-mail { font-size: 0.85rem; }
+      .hero-badge { left: auto; right: -16px; bottom: -22px; padding: 1rem 1.25rem; max-width: 190px; }
+      .hero-badge .num { font-size: 2rem; }
 
-      .hero { padding: 3.5rem 0 4.5rem; }
-      .hero h1 i { padding-left: 0; }
+      .who-grid { grid-template-columns: repeat(2, 1fr); }
+      .who-kicker { text-align: left; margin-left: 0; max-width: 100%; }
 
-      .band { padding: 3rem 0; }
-
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-photo { max-width: 260px; }
+      .how-grid { grid-template-columns: 1fr; }
 
       .audit-head { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
-      .audit-item {
-        grid-template-columns: 44px 1fr;
-        gap: 1rem;
-        padding: 1.5rem 0;
-      }
-      .audit-box { width: 26px; height: 26px; }
-      .audit-box svg { width: 16px; height: 16px; }
+      .audit-card { padding: 1.75rem; }
+      .audit-item { grid-template-columns: 32px 1fr; gap: 1rem; padding: 1.15rem 0; }
+      .audit-item:hover { padding-left: 0; }
+      .audit-box { width: 24px; height: 24px; }
+      .audit-box svg { width: 15px; height: 15px; }
 
-      .who-kicker { text-align: left; margin-left: 0; max-width: 100%; }
+      .practice-meta { flex-direction: column; align-items: flex-start; }
+
+      footer { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 1.75rem 0; }
+    }
+
+    @media (max-width: 480px) {
+      .who-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<div class="page">
-
-<!-- MASTHEAD -->
-<header class="masthead">
-  <p class="byline"><a href="#top">Foundation Forward<i style="font-style:normal;color:var(--mid)"> · </i>Kimberly Lohr, Business Architect</a></p>
-  <a href="mailto:klohr@foundationforward.com" class="masthead-mail">klohr@foundationforward.com</a>
-</header>
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo"><span class="mark" aria-hidden="true"></span>Foundation<span class="italic"> Forward</span></a>
+    <a href="mailto:klohr@foundationforward.com" class="pill nav-cta">Let's talk <span class="arrow">→</span></a>
+  </div>
+</nav>
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="grid">
-    <span class="mark">§ I</span>
-    <div class="col">
-      <h1>Let's get your business <i>working without you.</i></h1>
-      <p class="hero-deck">You built something real. But if it only works when you're the one doing it, that's not a business. That's a job you can't leave.</p>
-      <a href="mailto:klohr@foundationforward.com" class="hero-email">klohr@foundationforward.com</a>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>Let's get your business working <span class="accent">without you</span>.</h1>
+        <p class="hero-deck">You built something real. But if it only works when you're the one doing it, that's not a business. That's a job you can't leave.</p>
+        <a href="mailto:klohr@foundationforward.com" class="pill">Start the conversation <span class="arrow">→</span></a>
+
+        <div class="hero-credibility">
+          <div class="cred-stack" aria-hidden="true">
+            <span class="ring green">E</span>
+            <span class="ring gold">B</span>
+            <span class="ring ink">R</span>
+          </div>
+          <p class="cred-text">Extract. Build. Run. One quarterly engagement that turns the way you already work into a system your team can run.</p>
+        </div>
+      </div>
+
+      <div class="hero-photo-wrap">
+        <img src="klohr_headshot.jpg" alt="Kimberly Lohr, Business Architect" class="hero-photo" />
+        <div class="hero-badge">
+          <span class="num">12</span>
+          <span class="label">Weeks to a finished foundation</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- BAND -->
-<section class="band">
-  <p class="band-1">You built the expertise.</p>
-  <p class="band-2">I build everything around it.</p>
-</section>
+<div class="band">
+  <div class="wrap">
+    <p class="band-line">You built the expertise.<span class="accent">I build everything around it.</span></p>
+  </div>
+</div>
 
 <!-- PROBLEM -->
 <section>
-  <div class="grid">
-    <span class="mark">§ II</span>
-    <div class="col">
-      <p class="pull">"Your business is not your life. It's something separate from you, with its own rules and its own purposes. An organism, you might say, that will live or die according to how well it performs its sole function: to find and keep customers."</p>
-      <p class="pull-attr">Michael E. Gerber, The E-Myth Revisited</p>
-
-      <div class="prose">
-        <p>You've probably heard this. Maybe even tried it.</p>
-        <p>You're still the one doing everything.</p>
-        <p>Not because you aren't committed enough. Because his system isn't yours.</p>
+  <div class="wrap">
+    <p class="eyebrow">The Problem</p>
+    <div class="problem-card">
+      <div>
+        <p class="pull">"Your business is not your life. It's something separate from you, with its own rules and its own purposes. An organism, you might say, that will live or die according to how well it performs its sole function: to find and keep customers."</p>
+        <p class="pull-attr">Michael E. Gerber · The E-Myth Revisited</p>
       </div>
-
-      <p class="kicker">Systems will get you there. <i>Your</i> systems.</p>
+      <div class="problem-body">
+        <p>You've probably heard this. Maybe even tried it.</p>
+        <p>You're still the one doing everything. Not because you aren't committed enough. Because his system isn't yours.</p>
+        <p class="problem-kicker">Systems will get you there. <span class="accent">Your</span> systems.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- AUDIT -->
 <div class="audit-wrap">
-<section style="border-bottom: 0;">
-  <div class="grid">
-    <span class="mark">§ III</span>
-    <div class="col">
+  <div class="wrap">
+    <p class="eyebrow">The Self-Audit</p>
+    <div class="audit-card">
       <div class="audit-head">
-        <h2 class="audit-h2">The foundation of a business that can scale.</h2>
+        <h2 class="audit-h2">The foundation of a business that <span class="accent">can scale.</span></h2>
         <div class="audit-counter"><strong id="auditCount">0</strong> / 5 in place</div>
       </div>
       <p class="audit-sub">Check what you already have. We'll show you what's missing.</p>
@@ -817,61 +1018,90 @@
 
       <div class="audit-summary" id="auditSummary" aria-live="polite">
         <p id="auditMessage"></p>
-        <a id="auditCta" class="audit-cta" href="mailto:klohr@foundationforward.com">Start the conversation</a>
+        <a id="auditCta" class="pill" href="mailto:klohr@foundationforward.com">Start the conversation <span class="arrow">→</span></a>
       </div>
     </div>
   </div>
-</section>
 </div>
 
 <!-- OFFER -->
-<section class="offer">
-  <div class="grid">
-    <span class="mark">§ IV</span>
-    <div class="col">
-      <h2>The <em>Foundation Build</em>.</h2>
-      <p class="lead">I sit with you to understand how your work actually works. Then I build the tools and systems that let it keep working when you're not in the room.</p>
-
-      <div class="offer-list">
-        <p class="aside">Not a template. Not someone else's framework.</p>
-        <p>Built from what's already in your head. The way you actually work.</p>
-        <p>A playbook. A 10-week follow-up sequence. A curriculum. A content system. Whatever your business needs to keep running.</p>
-        <p>One quarterly engagement. One finished foundation.</p>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The Offer</p>
+    <div class="offer-card">
+      <div>
+        <h2>The <span class="accent">Foundation Build</span>.</h2>
+        <p class="lede">I sit with you to understand how your work actually works. Then I build the tools and systems that let it keep working when you're not in the room.</p>
+        <a href="mailto:klohr@foundationforward.com" class="pill">Discover the Foundation Build <span class="arrow">→</span></a>
+      </div>
+      <div>
+        <ul class="checklist">
+          <li>
+            <span class="tick" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div>
+              <strong>Built from what's in your head</strong>
+              <span>The way you actually work, not someone else's framework.</span>
+            </div>
+          </li>
+          <li>
+            <span class="tick" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div>
+              <strong>A finished artifact, not a strategy deck</strong>
+              <span>A playbook. A 10-week follow-up sequence. A curriculum. A content system.</span>
+            </div>
+          </li>
+          <li>
+            <span class="tick" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div>
+              <strong>One quarterly engagement</strong>
+              <span>Start to finished foundation in roughly 12 weeks. One-on-one.</span>
+            </div>
+          </li>
+        </ul>
+        <p class="offer-foot">Not a template. The one that's actually yours.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- WHO -->
-<section class="who">
-  <div class="grid">
-    <span class="mark">§ V</span>
-    <div class="col-wide">
-      <h2>Expert practitioners with thriving small businesses. The field varies. The shape of the problem doesn't.</h2>
-      <p class="who-list">
-        Coaches<span class="sep">·</span>Realtors<span class="sep">·</span>Photographers<span class="sep">·</span>Consultants<span class="sep">·</span>Childcare Directors
-      </p>
-      <p class="who-kicker">If someone else's system was going to work for you, it would have by now.</p>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Who it's for</p>
+    <h2>Expert practitioners with thriving small businesses. The field varies. The shape of the problem <span class="accent">doesn't.</span></h2>
+    <p class="lede">Everything currently runs through you. That's the ceiling.</p>
+
+    <div class="who-grid">
+      <div class="who-card"><span class="num">01</span><span class="name">Coaches</span></div>
+      <div class="who-card"><span class="num">02</span><span class="name">Realtors</span></div>
+      <div class="who-card"><span class="num">03</span><span class="name">Photographers</span></div>
+      <div class="who-card"><span class="num">04</span><span class="name">Consultants</span></div>
+      <div class="who-card"><span class="num">05</span><span class="name">Childcare Directors</span></div>
     </div>
+
+    <p class="who-kicker">If someone else's system was going to work for you, it would have by now.</p>
   </div>
 </section>
 
 <!-- HOW -->
 <section>
-  <div class="grid">
-    <span class="mark">§ VI</span>
-    <div class="col">
-      <div class="step">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2>Three steps. One <span class="accent">quarter.</span></h2>
+
+    <div class="how-grid">
+      <div class="how-card">
+        <p class="how-num">01</p>
         <h3>Extract.</h3>
         <p>We sit together. I ask the right questions and get what's in your head, even when you can't quite articulate it yourself. You've already figured it out. I find it.</p>
       </div>
-
-      <div class="step">
+      <div class="how-card">
+        <p class="how-num">02</p>
         <h3>Build.</h3>
-        <p>I build the artifact. A playbook. A 10-week follow-up sequence. A curriculum. A content system. Whatever your business needs to keep running. Built the way you actually work, not the way someone else does.</p>
+        <p>I build the artifact. A playbook. A sequence. A curriculum. A content system. Whatever your business needs to keep running. Built the way you actually work.</p>
       </div>
-
-      <div class="step">
+      <div class="how-card">
+        <p class="how-num">03</p>
         <h3>Run.</h3>
         <p>Your business runs without you in the room. What we built keeps doing the work.</p>
       </div>
@@ -881,14 +1111,14 @@
 
 <!-- PRACTICE -->
 <section>
-  <div class="grid">
-    <span class="mark">§ VII</span>
-    <div class="col">
+  <div class="wrap">
+    <p class="eyebrow">In Practice</p>
+    <div class="practice-card">
       <p class="practice-body">A business coach with years of methodology that had never been written down. We're building her curriculum systematically on Substack. Real, publishable content now. A course she can sell when it's ready.</p>
-      <p class="practice-kicker">One effort. <i style="font-weight:700">Two products.</i></p>
+      <p class="practice-kicker">One effort. Two products.</p>
       <div class="practice-meta">
         <p class="practice-caption">Current client · Foundation Forward Consulting</p>
-        <a href="foundation_forward_portfolio.html" class="practice-link">See the deeper portfolio</a>
+        <a href="foundation_forward_portfolio.html" class="practice-link">See the deeper portfolio <span class="arrow">→</span></a>
       </div>
     </div>
   </div>
@@ -896,19 +1126,17 @@
 
 <!-- ABOUT -->
 <section class="about">
-  <div class="grid">
-    <span class="mark">§ VIII</span>
-    <div class="col-wide">
-      <div class="about-grid">
-        <img src="klohr_headshot.jpg" alt="Kimberly Lohr" class="about-photo" />
-        <div>
-          <h2>Kimberly <em>Lohr</em></h2>
-          <p class="about-role">Business Architect · Foundation Forward Consulting</p>
-          <div class="about-body">
-            <p>I trained as an instructional designer. The job taught me how to sit with an expert and get what they know out of their head and into a working artifact someone else can use.</p>
-            <p>I do that for small business owners now. The expertise is already there. The shape of a business around it is the part that's missing.</p>
-            <p>The question that drives the work: <em>what would your business look like if it didn't depend on you to run?</em></p>
-          </div>
+  <div class="wrap">
+    <p class="eyebrow">The Architect</p>
+    <div class="about-grid">
+      <img src="klohr_headshot.jpg" alt="Kimberly Lohr" class="about-photo" />
+      <div>
+        <h2>Kimberly <span class="accent">Lohr</span>.</h2>
+        <p class="about-role">Business Architect · Foundation Forward Consulting</p>
+        <div class="about-body">
+          <p>I trained as an instructional designer. The job taught me how to sit with an expert and get what they know out of their head and into a working artifact someone else can use.</p>
+          <p>I do that for small business owners now. The expertise is already there. The shape of a business around it is the part that's missing.</p>
+          <p>The question that drives the work: <em>what would your business look like if it didn't depend on you to run?</em></p>
         </div>
       </div>
     </div>
@@ -917,23 +1145,20 @@
 
 <!-- CLOSING -->
 <section class="closing">
-  <div class="grid">
-    <span class="mark">§ IX</span>
-    <div class="col-wide">
-      <h2>Ready to <i>build yours?</i></h2>
-      <p>One conversation to see if it's a fit.</p>
-      <a href="mailto:klohr@foundationforward.com" class="closing-email">klohr@foundationforward.com</a>
-    </div>
+  <div class="wrap">
+    <h2>Ready to <span class="accent">build yours?</span></h2>
+    <p>One conversation to see if it's a fit. No pitch. No deck.</p>
+    <a href="mailto:klohr@foundationforward.com" class="pill">klohr@foundationforward.com <span class="arrow">→</span></a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <span class="foot-left">Foundation Forward · Kimberly Lohr</span>
-  <span>© 2026 · <a href="mailto:klohr@foundationforward.com">klohr@foundationforward.com</a></span>
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap; padding:0;">
+    <span class="foot-left">Foundation Forward · Kimberly Lohr · Business Architect</span>
+    <span>© 2026 · <a href="mailto:klohr@foundationforward.com">klohr@foundationforward.com</a></span>
+  </div>
 </footer>
-
-</div>
 
 <script>
   (function () {
