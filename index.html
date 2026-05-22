@@ -16,14 +16,16 @@
       --panel:      #ffffff;
       --gray:       #5b574e;
       --mid:        #8e8676;
-      --gold:       #c9a84c;
-      --gold-deep:  #a88a3c;
-      --green:      #2d6a4f;
+      --plum:       #6b3a72;
+      --plum-deep:  #4a2750;
+      --plum-soft:  #d8c5dd;
       --rule:       #1a1a1a;
       --rule-soft:  #d4cdb9;
       --radius-lg:  28px;
       --radius-md:  18px;
       --radius-sm:  10px;
+      --blob-1:     180px 60px 180px 60px;
+      --blob-2:     60px 180px 60px 180px;
       --gutter:     clamp(1.25rem, 3.5vw, 3rem);
       --maxw:       1180px;
     }
@@ -58,11 +60,11 @@
       color: var(--ink);
     }
 
-    /* the italic green emphasis word — the brand "tell" */
+    /* the italic plum emphasis word — the brand "tell" */
     .accent {
       font-style: italic;
       font-weight: 500;
-      color: var(--green);
+      color: var(--plum);
     }
 
     /* ── PILL CTA ── */
@@ -70,8 +72,8 @@
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
-      background: var(--gold);
-      color: var(--ink);
+      background: var(--plum);
+      color: var(--paper);
       padding: 0.95rem 1.85rem;
       border-radius: 999px;
       font-family: 'Epilogue', sans-serif;
@@ -82,7 +84,7 @@
       transition: background 0.2s ease, transform 0.08s ease;
       box-shadow: 0 1px 0 rgba(0,0,0,0.04);
     }
-    .pill:hover { background: var(--gold-deep); color: var(--paper); }
+    .pill:hover { background: var(--plum-deep); color: var(--paper); }
     .pill:active { transform: translateY(1px); }
 
     .pill-ghost {
@@ -128,7 +130,7 @@
       width: 22px;
       height: 22px;
       border-radius: 999px;
-      background: var(--green);
+      background: var(--plum);
       position: relative;
     }
     .logo .mark::after {
@@ -136,10 +138,10 @@
       position: absolute;
       inset: 6px;
       border-radius: 999px;
-      background: var(--gold);
+      background: var(--plum-soft);
     }
 
-    .logo span.italic { font-style: italic; font-weight: 500; color: var(--green); }
+    .logo span.italic { font-style: italic; font-weight: 500; color: var(--plum); }
 
     .nav-cta { padding: 0.75rem 1.4rem; font-size: 0.78rem; }
 
@@ -204,9 +206,9 @@
       color: var(--ink);
     }
     .cred-stack .ring:first-child { margin-left: 0; }
-    .cred-stack .ring.green { background: var(--green); color: var(--paper); }
-    .cred-stack .ring.gold { background: var(--gold); color: var(--ink); }
-    .cred-stack .ring.ink  { background: var(--ink); color: var(--paper); }
+    .cred-stack .ring.green { background: var(--plum); color: var(--paper); border-color: var(--paper); }
+    .cred-stack .ring.gold  { background: var(--plum-soft); color: var(--plum-deep); border-color: var(--paper); }
+    .cred-stack .ring.ink   { background: var(--ink); color: var(--paper); border-color: var(--paper); }
 
     .cred-text {
       font-family: 'Epilogue', sans-serif;
@@ -225,20 +227,20 @@
       aspect-ratio: 4 / 5;
       object-fit: cover;
       object-position: center 18%;
-      border-radius: var(--radius-lg);
+      border-radius: var(--blob-1);
       filter: saturate(1.04) contrast(1.02);
     }
 
     .hero-badge {
       position: absolute;
-      bottom: -22px;
+      bottom: 8%;
       left: -22px;
-      background: var(--gold);
-      color: var(--ink);
+      background: var(--plum);
+      color: var(--paper);
       padding: 1.25rem 1.5rem;
-      border-radius: var(--radius-md);
+      border-radius: 999px 18px 999px 18px;
       max-width: 220px;
-      box-shadow: 0 12px 28px rgba(26,26,26,0.08);
+      box-shadow: 0 12px 28px rgba(74,39,80,0.18);
     }
 
     .hero-badge .num {
@@ -277,7 +279,7 @@
       max-width: 28ch;
     }
 
-    .band-line .accent { font-style: italic; font-weight: 500; color: var(--green); display: block; }
+    .band-line .accent { font-style: italic; font-weight: 500; color: var(--plum); display: block; }
 
     /* ── SECTION ── */
     section { padding: clamp(4rem, 7vw, 6rem) 0; }
@@ -288,7 +290,7 @@
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--plum);
       margin-bottom: 1.5rem;
       display: inline-flex;
       align-items: center;
@@ -299,7 +301,7 @@
       content: '';
       width: 14px;
       height: 1.5px;
-      background: var(--green);
+      background: var(--plum);
       display: block;
     }
 
@@ -313,7 +315,7 @@
       margin-bottom: 1.5rem;
     }
 
-    h2 .accent { color: var(--green); }
+    h2 .accent { color: var(--plum); }
 
     .lede {
       font-family: 'Epilogue', sans-serif;
@@ -373,7 +375,7 @@
       border-top: 1px solid var(--rule-soft);
       max-width: 24ch;
     }
-    .problem-kicker .accent { color: var(--green); }
+    .problem-kicker .accent { color: var(--plum); }
 
     /* ── AUDIT ── */
     .audit-wrap { padding: clamp(4rem, 7vw, 6rem) 0; }
@@ -404,7 +406,7 @@
       max-width: 20ch;
       margin: 0;
     }
-    .audit-h2 .accent { color: var(--green); }
+    .audit-h2 .accent { color: var(--plum); }
 
     .audit-counter {
       font-family: 'Epilogue', sans-serif;
@@ -440,7 +442,7 @@
     }
 
     .audit-item:hover { padding-left: 0.5rem; }
-    .audit-item:focus-visible { outline: 2px solid var(--green); outline-offset: 6px; border-radius: 4px; }
+    .audit-item:focus-visible { outline: 2px solid var(--plum); outline-offset: 6px; border-radius: 4px; }
 
     .audit-box {
       width: 28px;
@@ -464,8 +466,8 @@
     }
 
     .audit-item.checked .audit-box {
-      background: var(--green);
-      border-color: var(--green);
+      background: var(--plum);
+      border-color: var(--plum);
     }
     .audit-item.checked .audit-box svg { opacity: 1; transform: scale(1); }
 
@@ -546,7 +548,7 @@
       width: 22px;
       height: 22px;
       border-radius: 999px;
-      background: var(--green);
+      background: var(--plum);
       display: grid;
       place-items: center;
       margin-top: 3px;
@@ -608,7 +610,7 @@
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: 1rem;
-      color: var(--green);
+      color: var(--plum);
     }
 
     .who-card .name {
@@ -655,7 +657,7 @@
       font-style: italic;
       font-weight: 500;
       font-size: 2.4rem;
-      color: var(--green);
+      color: var(--plum);
       line-height: 1;
       margin-bottom: 1.25rem;
     }
@@ -702,7 +704,7 @@
       font-size: clamp(1.6rem, 3vw, 2.4rem);
       line-height: 1.15;
       letter-spacing: -0.015em;
-      color: var(--green);
+      color: var(--plum);
       margin-bottom: 2.5rem;
       max-width: 20ch;
     }
@@ -731,12 +733,12 @@
       font-weight: 600;
       font-size: 0.85rem;
       letter-spacing: 0.04em;
-      color: var(--green);
+      color: var(--plum);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      border-bottom: 1.5px solid var(--green);
+      border-bottom: 1.5px solid var(--plum);
       padding-bottom: 2px;
     }
 
@@ -753,12 +755,12 @@
       aspect-ratio: 4 / 5;
       object-fit: cover;
       object-position: center 22%;
-      border-radius: var(--radius-lg);
+      border-radius: var(--blob-2);
       filter: saturate(1.0) contrast(1.02);
     }
 
     .about h2 { margin-bottom: 0.5rem; }
-    .about h2 .accent { color: var(--green); font-weight: 500; }
+    .about h2 .accent { color: var(--plum); font-weight: 500; }
 
     .about-role {
       font-family: 'Epilogue', sans-serif;
@@ -766,7 +768,7 @@
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--plum);
       margin-bottom: 2rem;
     }
 
@@ -781,7 +783,7 @@
     .about-body em {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      color: var(--green);
+      color: var(--plum);
       font-size: 1.1rem;
     }
 
@@ -801,7 +803,7 @@
       max-width: 18ch;
     }
 
-    .closing h2 .accent { color: var(--green); font-weight: 500; }
+    .closing h2 .accent { color: var(--plum); font-weight: 500; }
 
     .closing p {
       font-family: 'Epilogue', sans-serif;
