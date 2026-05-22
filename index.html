@@ -1,1427 +1,1070 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Foundation Forward — A practice of Kimberly Lohr</title>
-<meta name="description" content="Foundation Forward is the operating practice of Kimberly Lohr. Architectural intelligence for founder-led learning businesses." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kimberly Lohr · Business Architect</title>
+  <meta name="description" content="Let's get your business working without you. The Foundation Build turns the way you already work into a system your team can run." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black:   #111111;
+      --off:     #f7f6f3;
+      --warm:    #f0ede6;
+      --gray:    #6e6e6e;
+      --mid:     #999999;
+      --light:   #d4d1cb;
+      --gold:    #c9a84c;
+      --gold-soft: rgba(201,168,76,0.14);
+      --green:   #2d6a4f;
+      --border:  #e6e3dc;
+      --maxw:    1080px;
+    }
 
-<style>
-  :root{
-    --ink:        #1a1814;
-    --graphite:   #2c2a26;
-    --stone:      #6b6558;
-    --smoke:      #9b9588;
-    --rule:       #cdc6b6;
-    --rule-soft:  #e1dbcc;
-    --paper:      #ebe5d5;
-    --parchment:  #efe9d9;
-    --off:        #f3eee0;
-    --canvas:     #f6f2e6;
-    --olive:      #4e5240;
-    --oxide:      #8a6a3f;
-    --crimson:    #7a3a2f;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-    --serif:   'Cormorant Garamond', 'EB Garamond', Georgia, serif;
-    --editor:  'Spectral', Georgia, serif;
-    --sans:    'Inter', system-ui, -apple-system, sans-serif;
-    --mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
+    body {
+      background: var(--off);
+      color: var(--black);
+      font-family: 'Epilogue', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-    --ease: cubic-bezier(.2,.7,.2,1);
-  }
+    a { color: inherit; }
 
-  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+    /* ── NAV ── */
+    nav {
+      padding: 1.25rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(247,246,243,0.94);
+      backdrop-filter: blur(10px);
+      z-index: 50;
+    }
 
-  html{ scroll-behavior:smooth; }
-  html, body{
-    background: var(--canvas);
-    color: var(--ink);
-    font-family: var(--editor);
-    font-size: 16.5px;
-    line-height: 1.62;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    overflow-x:hidden;
-  }
+    .nav-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
 
-  /* paper grain overlay */
-  body::before{
-    content:'';
-    position:fixed; inset:0;
-    pointer-events:none;
-    z-index: 1;
-    opacity:.55;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0 0.04 0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    mix-blend-mode: multiply;
-  }
-  /* faint vignette */
-  body::after{
-    content:'';
-    position:fixed; inset:0;
-    pointer-events:none;
-    z-index: 1;
-    background: radial-gradient(120% 90% at 50% 40%, transparent 60%, rgba(40,32,20,0.10) 100%);
-  }
+    .nav-cta {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1.5px solid var(--gold);
+      transition: color 0.2s;
+    }
 
-  a{ color: inherit; text-decoration: none; }
-  ::selection{ background: var(--ink); color: var(--off); }
+    .nav-cta:hover { color: var(--gold); }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  TYPE
-   * ─────────────────────────────────────────────────────── */
-  .display{
-    font-family: var(--serif);
-    font-weight: 300;
-    letter-spacing: -0.018em;
-    line-height: 1.02;
-    color: var(--ink);
-  }
-  .display em{ font-style: italic; font-weight: 400; color: var(--graphite); }
+    /* ── SECTION SHELL ── */
+    section { padding: 5.5rem 3rem; }
+    .inner { max-width: var(--maxw); margin: 0 auto; }
 
-  .editor{
-    font-family: var(--editor);
-    font-weight: 300;
-    line-height: 1.68;
-    color: var(--graphite);
-  }
-  .editor em{ color: var(--ink); }
+    .section-label {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
 
-  .meta{
-    font-family: var(--sans);
-    font-weight: 500;
-    font-size: 10.5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--stone);
-  }
-  .mono{
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.06em;
-    color: var(--stone);
-  }
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
 
-  .rule{ height:1px; background: var(--rule); width:100%; display:block; }
-  .rule-soft{ height:1px; background: var(--rule-soft); width:100%; display:block; }
+    /* ── HERO ── */
+    .hero { padding: 7rem 3rem 6rem; }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  CHROME — slim nav + side margin rail
-   * ─────────────────────────────────────────────────────── */
-  nav.frame-nav{
-    position: fixed;
-    top: 0; left:0; right:0;
-    z-index: 50;
-    display:grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items:center;
-    padding: 18px 36px 16px;
-    background: linear-gradient(to bottom, rgba(246,242,230,0.92), rgba(246,242,230,0.0));
-    backdrop-filter: saturate(120%) blur(2px);
-  }
-  nav.frame-nav .left, nav.frame-nav .right{ display:flex; align-items:center; gap:24px; }
-  nav.frame-nav .right{ justify-content:flex-end; }
-  nav.frame-nav .markk{
-    font-family: var(--serif);
-    font-weight:400; font-style: italic;
-    font-size: 19px;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-  }
-  nav.frame-nav .dot{ width:5px; height:5px; border-radius:50%; background: var(--olive); display:inline-block; transform: translateY(-2px); }
-  nav.frame-nav a.nav-link{ position:relative; }
-  nav.frame-nav a.nav-link:hover{ color: var(--ink); }
+    .hero-h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.75rem, 6.2vw, 5.25rem);
+      font-weight: 600;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--black);
+      max-width: 16ch;
+      margin-bottom: 2.75rem;
+    }
 
-  .clock{
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.04em;
-    color: var(--stone);
-  }
+    .hero-h1 em { font-style: italic; color: var(--green); }
 
-  /* margin rail — printed location marker */
-  .margin-rail{
-    position: fixed;
-    top: 0; bottom: 0;
-    left: 20px;
-    width: 16px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    pointer-events:none;
-    z-index: 40;
-  }
-  .margin-rail .vline{
-    width:1px; flex:1; background: var(--rule-soft);
-    margin: 12px 0;
-  }
-  .margin-rail .rotated{
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    font-family: var(--mono);
-    font-size: 9.5px;
-    letter-spacing: 0.22em;
-    color: var(--stone);
-    text-transform: uppercase;
-    padding: 14px 0;
-  }
+    .hero-h1 .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      margin-right: 0.18em;
+    }
+    .hero-h1 .word.show { opacity: 1; transform: translateY(0); }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  CONTAINER
-   * ─────────────────────────────────────────────────────── */
-  .frame{
-    position: relative;
-    z-index: 2;
-    padding: 64px 80px;
-    max-width: 1320px;
-    margin: 0 auto;
-  }
-  .frame.tight{ padding: 56px 80px; }
-  .frame.lg{ padding: 120px 80px; }
+    .hero-sub {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--black);
+      max-width: 56ch;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .hero-sub.show { opacity: 1; transform: translateY(0); }
 
-  @media (max-width: 900px){
-    .frame, .frame.lg, .frame.tight{ padding: 56px 28px; }
-    .margin-rail{ display:none; }
-    nav.frame-nav{ padding: 14px 22px; grid-template-columns: 1fr auto; }
-    nav.frame-nav .right .nav-link.hide-sm{ display:none; }
-  }
+    .hero-cta {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding-bottom: 4px;
+      border-bottom: 1.5px solid var(--gold);
+      opacity: 0;
+      transition: opacity 0.4s ease, color 0.2s ease;
+    }
+    .hero-cta.show { opacity: 1; }
+    .hero-cta:hover { color: var(--gold); }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  00 — OPENING FRAME
-   * ─────────────────────────────────────────────────────── */
-  .opening{
-    min-height: 100vh;
-    padding-top: 140px;
-    display: grid;
-    grid-template-columns: 1.1fr 1.9fr 1fr;
-    gap: 56px;
-    align-items: start;
-  }
-  .opening .col-left{
-    display:flex; flex-direction:column; gap: 36px;
-    border-right: 1px solid var(--rule-soft);
-    padding-right: 44px;
-    padding-top: 12px;
-  }
-  .opening .col-left .marker{
-    display:flex; flex-direction:column; gap: 6px;
-  }
-  .opening .col-left .marker-title{ font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--ink); font-weight: 400; }
-  .opening .col-left p.editor{ font-size: 14.5px; line-height: 1.7; }
+    /* ── BRAND BAND ── */
+    .band {
+      padding: 4rem 3rem;
+      background: var(--warm);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
 
-  .opening h1.display{
-    font-size: clamp(54px, 7.4vw, 116px);
-    letter-spacing: -0.025em;
-    line-height: 0.98;
-    color: var(--ink);
-  }
-  .opening h1.display .ital{ font-style: italic; font-weight: 400; color: var(--graphite); }
-  .opening h1.display .thin{ color: var(--stone); font-weight: 300; }
+    .band p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.4;
+      max-width: 720px;
+      margin: 0 auto;
+    }
 
-  .opening .lede{
-    margin-top: 40px;
-    max-width: 560px;
-    font-size: 18px;
-    color: var(--graphite);
-  }
+    .band p strong { font-weight: 600; font-style: normal; }
 
-  /* status panel — quiet OS */
-  .opening .status{
-    border: 1px solid var(--rule);
-    background: linear-gradient(to bottom, var(--off), var(--paper));
-    padding: 24px 22px;
-    display: grid;
-    gap: 14px;
-    margin-top: 6px;
-  }
-  .status .row{ display:grid; grid-template-columns: 1fr auto; gap: 18px; align-items:baseline; padding-bottom: 10px; border-bottom: 1px dotted var(--rule); }
-  .status .row:last-child{ border-bottom: none; padding-bottom: 0; }
-  .status .row .k{ font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.16em; text-transform:uppercase; color: var(--stone); }
-  .status .row .v{ font-family: var(--editor); font-size: 13.5px; color: var(--ink); text-align: right; }
-  .status .row .v.ital{ font-style: italic; font-family: var(--serif); font-size: 15px; }
-  .status .pulse{
-    display:inline-flex; align-items:center; gap:7px;
-  }
-  .status .pulse .led{
-    width:7px; height:7px; border-radius:50%;
-    background: var(--olive);
-    box-shadow: 0 0 0 0 rgba(78,82,64,0.4);
-    animation: pulse 3.2s var(--ease) infinite;
-  }
-  @keyframes pulse{
-    0%   { box-shadow: 0 0 0 0 rgba(78,82,64,0.35); }
-    70%  { box-shadow: 0 0 0 10px rgba(78,82,64,0.0); }
-    100% { box-shadow: 0 0 0 0 rgba(78,82,64,0.0); }
-  }
+    /* ── PROBLEM ── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
 
-  /* scroll cue */
-  .scroll-cue{
-    display:flex; align-items:center; gap: 10px;
-    margin-top: 56px;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--stone);
-  }
-  .scroll-cue .line{ width: 56px; height:1px; background: var(--rule); }
+    .quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      line-height: 1.45;
+      color: var(--black);
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--gold);
+    }
 
-  @media (max-width: 1100px){
-    .opening{ grid-template-columns: 1fr; gap: 40px; }
-    .opening .col-left{ border-right: none; padding-right: 0; border-bottom: 1px solid var(--rule-soft); padding-bottom: 28px; }
-  }
+    .quote-attr {
+      font-family: 'Epilogue', sans-serif;
+      font-style: normal;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-top: 1.5rem;
+      display: block;
+    }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  SECTION HEADER (shared)
-   * ─────────────────────────────────────────────────────── */
-  .sec-head{
-    display:grid;
-    grid-template-columns: 130px 1fr 200px;
-    gap: 36px;
-    align-items: baseline;
-    margin-bottom: 52px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid var(--rule);
-  }
-  .sec-head .idx{ font-family: var(--mono); font-size: 11px; letter-spacing:0.18em; color: var(--stone); text-transform: uppercase; }
-  .sec-head .title{ font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 28px; color: var(--ink); line-height: 1.1; }
-  .sec-head .gloss{ font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.04em; color: var(--stone); text-align: right; }
-  @media (max-width: 800px){
-    .sec-head{ grid-template-columns: 1fr; gap: 10px; margin-bottom: 32px; }
-    .sec-head .gloss{ text-align: left; }
-  }
+    .problem-body p {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: var(--black);
+      margin-bottom: 1.25rem;
+    }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  01 — PREMISE
-   * ─────────────────────────────────────────────────────── */
-  .premise-body{
-    display: grid;
-    grid-template-columns: 1fr 2.1fr 1fr;
-    gap: 56px;
-    align-items: start;
-  }
-  .marginalia{
-    font-family: var(--sans);
-    font-size: 11.5px;
-    line-height: 1.6;
-    letter-spacing: 0.02em;
-    color: var(--stone);
-    display:flex; flex-direction: column; gap: 18px;
-    border-left: 1px solid var(--rule-soft);
-    padding-left: 18px;
-  }
-  .marginalia .m-label{ font-weight: 500; color: var(--ink); letter-spacing: 0.12em; text-transform: uppercase; font-size: 10px; }
-  .premise-column p{
-    font-family: var(--editor);
-    font-size: 18.5px;
-    line-height: 1.78;
-    color: var(--graphite);
-    max-width: 56ch;
-  }
-  .premise-column p + p{ margin-top: 22px; }
-  .premise-column p em{ color: var(--ink); }
-  .premise-pull{
-    margin-top: 36px;
-    padding-top: 30px;
-    border-top: 1px solid var(--rule);
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(28px, 3vw, 42px);
-    line-height: 1.16;
-    letter-spacing: -0.012em;
-    color: var(--ink);
-    max-width: 22ch;
-  }
-  .premise-pull em{ font-style: italic; color: var(--graphite); }
-  .premise-right{
-    align-self:end;
-    border-top: 1px solid var(--rule-soft);
-    padding-top: 14px;
-  }
-  .premise-right .stamp{ font-family: var(--mono); font-size: 10.5px; color: var(--stone); letter-spacing: 0.14em; text-transform: uppercase; }
-  .premise-right .stamp + .stamp{ margin-top: 4px; }
-  @media (max-width: 1000px){
-    .premise-body{ grid-template-columns: 1fr; }
-    .marginalia{ border-left: none; border-top: 1px solid var(--rule-soft); padding-left: 0; padding-top: 18px; }
-  }
+    .problem-body p:last-child { margin-bottom: 0; }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  02 — OPERATING PRINCIPLES
-   * ─────────────────────────────────────────────────────── */
-  .principles{
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 30px 36px;
-    row-gap: 56px;
-  }
-  .principle{
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 24px;
-    padding-top: 18px;
-    border-top: 1px solid var(--rule);
-  }
-  .principle .num{
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--stone);
-    letter-spacing: 0.18em;
-  }
-  .principle h3{
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: 26px;
-    line-height: 1.12;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-    margin-bottom: 14px;
-  }
-  .principle h3 em{ font-style: italic; color: var(--graphite); }
-  .principle p{
-    font-family: var(--editor);
-    font-size: 15.5px;
-    line-height: 1.72;
-    color: var(--graphite);
-    max-width: 44ch;
-  }
-  .principle .tension{
-    margin-top: 18px;
-    padding-top: 12px;
-    border-top: 1px dotted var(--rule);
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    color: var(--stone);
-  }
-  .principle .tension strong{
-    font-weight: 500;
-    color: var(--ink);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-right: 8px;
-  }
-  /* asymmetric placement */
-  .principle:nth-child(1){ grid-column: 1 / span 6; }
-  .principle:nth-child(2){ grid-column: 8 / span 5; }
-  .principle:nth-child(3){ grid-column: 2 / span 5; }
-  .principle:nth-child(4){ grid-column: 8 / span 5; }
-  .principle:nth-child(5){ grid-column: 1 / span 5; }
-  .principle:nth-child(6){ grid-column: 7 / span 6; }
+    .problem-kicker {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--black);
+      margin-top: 2.25rem;
+      padding-top: 2.25rem;
+      border-top: 1px solid var(--border);
+    }
 
-  @media (max-width: 900px){
-    .principles{ display:flex; flex-direction:column; gap: 36px; }
-    .principle{ grid-template-columns: 60px 1fr; gap: 14px; }
-  }
+    .problem-kicker em { font-style: italic; color: var(--gold); }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  03 — FRAMEWORK MAP
-   * ─────────────────────────────────────────────────────── */
-  .framework{
-    display:grid;
-    grid-template-columns: 1.3fr 2fr;
-    gap: 64px;
-    align-items: start;
-  }
-  .framework .legend p{
-    font-family: var(--editor);
-    font-size: 16px;
-    line-height: 1.72;
-    color: var(--graphite);
-    max-width: 38ch;
-  }
-  .framework .legend p + p{ margin-top: 16px; }
-  .framework .legend .legend-meta{
-    margin-top: 32px;
-    padding-top: 20px;
-    border-top: 1px solid var(--rule-soft);
-    display: grid; grid-template-columns: auto 1fr; gap: 12px 22px;
-    font-family: var(--mono); font-size: 11px; color: var(--stone);
-  }
-  .framework .legend .legend-meta .k{ color: var(--ink); letter-spacing: 0.14em; text-transform: uppercase; }
+    /* ── SELF-AUDIT ── */
+    .audit {
+      background: var(--warm);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
 
-  .diagram{
-    border: 1px solid var(--rule);
-    background: linear-gradient(to bottom, var(--off), var(--paper));
-    padding: 36px 30px 26px;
-    position: relative;
-  }
-  .diagram::before{
-    content:'';
-    position:absolute; inset: 10px;
-    border:1px dashed var(--rule-soft);
-    pointer-events:none;
-  }
-  .diagram .layer{
-    position: relative;
-    display:grid;
-    grid-template-columns: 64px 1fr 1fr;
-    gap: 22px;
-    padding: 22px 0 22px;
-    border-bottom: 1px solid var(--rule-soft);
-  }
-  .diagram .layer:last-child{ border-bottom: none; }
-  .diagram .layer .lyr-num{
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    color: var(--stone);
-    padding-top: 6px;
-  }
-  .diagram .layer .lyr-title{
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: 24px;
-    color: var(--ink);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-  }
-  .diagram .layer .lyr-title small{
-    display:block;
-    font-family: var(--sans);
-    font-style: normal;
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--stone);
-    margin-top: 6px;
-    font-weight: 500;
-  }
-  .diagram .layer .lyr-body{
-    font-family: var(--editor);
-    font-size: 14px;
-    line-height: 1.62;
-    color: var(--graphite);
-  }
-  .diagram .layer .lyr-body ul{ list-style: none; display:flex; flex-direction:column; gap: 6px; }
-  .diagram .layer .lyr-body li{ display:flex; gap:10px; }
-  .diagram .layer .lyr-body li::before{
-    content: '';
-    width: 14px; height: 1px; background: var(--stone);
-    flex: 0 0 14px;
-    margin-top: 11px;
-  }
+    .audit-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 2rem;
+      margin-bottom: 0.75rem;
+    }
 
-  /* spine line connecting layers */
-  .diagram .spine{
-    position: absolute;
-    left: 80px;
-    top: 30px; bottom: 30px;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, var(--rule) 12%, var(--rule) 88%, transparent);
-  }
-  @media (max-width: 1000px){
-    .framework{ grid-template-columns: 1fr; }
-    .diagram .layer{ grid-template-columns: 50px 1fr; }
-    .diagram .layer .lyr-body{ grid-column: 1 / -1; padding-left: 50px; padding-top: 4px; }
-    .diagram .spine{ left: 64px; }
-  }
+    .audit-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.85rem, 3.5vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1.18;
+      color: var(--black);
+      max-width: 22ch;
+    }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  04 — ENGAGEMENTS / DOSSIERS
-   * ─────────────────────────────────────────────────────── */
-  .dossier{
-    display:grid;
-    grid-template-columns: 220px 1fr 1fr;
-    gap: 44px;
-    padding: 44px 0;
-    border-top: 1px solid var(--rule);
-  }
-  .dossier:first-of-type{ border-top: 1px solid var(--ink); padding-top: 36px; }
-  .dossier:last-of-type{ border-bottom: 1px solid var(--rule); }
-  .dossier .file-id{
-    display:flex; flex-direction:column; gap: 12px;
-  }
-  .dossier .file-id .seq{
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: 88px;
-    line-height: 0.88;
-    color: var(--ink);
-    letter-spacing: -0.04em;
-  }
-  .dossier .file-id .ref{
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
-    color: var(--stone);
-    text-transform: uppercase;
-  }
-  .dossier .file-id .status-pill{
-    margin-top: 18px;
-    display:inline-flex; align-items:center; gap: 8px;
-    padding: 6px 0; width:max-content;
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--olive);
-  }
-  .dossier .file-id .status-pill::before{
-    content:''; width:6px; height:6px; border-radius:50%; background: var(--olive);
-  }
-  .dossier .file-id .status-pill.archived{ color: var(--stone); }
-  .dossier .file-id .status-pill.archived::before{ background: var(--stone); }
-  .dossier .file-id .status-pill.dev{ color: var(--oxide); }
-  .dossier .file-id .status-pill.dev::before{ background: var(--oxide); }
+    .audit-counter {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--gold);
+      white-space: nowrap;
+    }
 
-  .dossier .narrative .client-line{
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--stone);
-    margin-bottom: 14px;
-  }
-  .dossier .narrative h3{
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(28px, 2.4vw, 38px);
-    line-height: 1.1;
-    letter-spacing: -0.015em;
-    color: var(--ink);
-    margin-bottom: 18px;
-  }
-  .dossier .narrative h3 em{ font-style: italic; color: var(--graphite); }
-  .dossier .narrative p{
-    font-family: var(--editor);
-    font-size: 15.5px;
-    line-height: 1.72;
-    color: var(--graphite);
-    max-width: 44ch;
-  }
-  .dossier .narrative p + p{ margin-top: 14px; }
+    .audit-counter strong {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--black);
+    }
 
-  .dossier .ledger{
-    display:grid; gap: 18px;
-    align-self: start;
-  }
-  .dossier .ledger .row{
-    display:grid;
-    grid-template-columns: 110px 1fr;
-    gap: 18px;
-    padding-bottom: 14px;
-    border-bottom: 1px dotted var(--rule);
-  }
-  .dossier .ledger .row:last-child{ border-bottom: none; }
-  .dossier .ledger .row .k{
-    font-family: var(--sans);
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--stone);
-    padding-top: 3px;
-  }
-  .dossier .ledger .row .v{
-    font-family: var(--editor);
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--ink);
-  }
-  .dossier .ledger .row .v em{ font-style: italic; color: var(--graphite); }
-  .dossier .ledger .instruments{
-    display:flex; flex-wrap: wrap; gap: 8px;
-    margin-top: 4px;
-  }
-  .dossier .ledger .instruments span{
-    font-family: var(--sans);
-    font-size: 10.5px;
-    letter-spacing: 0.06em;
-    color: var(--graphite);
-    padding: 4px 10px 5px;
-    border: 1px solid var(--rule);
-    background: rgba(255,255,255,0.3);
-  }
-  .dossier .ledger .ext-link{
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink);
-    display:inline-flex; align-items:center; gap:8px;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 2px;
-    width: max-content;
-    transition: color .3s var(--ease), border-color .3s var(--ease);
-  }
-  .dossier .ledger .ext-link:hover{ color: var(--oxide); border-color: var(--oxide); }
-  .dossier .ledger .ext-link .arr{ font-family: var(--serif); font-size: 14px; }
-  @media (max-width: 1100px){
-    .dossier{ grid-template-columns: 1fr; gap: 24px; }
-    .dossier .file-id .seq{ font-size: 64px; }
-  }
+    .audit-sub {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 2.75rem;
+      max-width: 50ch;
+    }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  05 — FIELD NOTES / OBSERVATIONS
-   * ─────────────────────────────────────────────────────── */
-  .field-notes{
-    display:grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 40px;
-  }
-  .note{
-    border-top: 1px solid var(--rule);
-    padding-top: 18px;
-    display:flex; flex-direction:column; gap: 10px;
-  }
-  .note .n-num{ font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; color: var(--stone); text-transform: uppercase; }
-  .note p{
-    font-family: var(--editor);
-    font-size: 15.5px;
-    line-height: 1.7;
-    color: var(--graphite);
-  }
-  .note p em{ font-family: var(--serif); font-size: 17.5px; font-style: italic; color: var(--ink); line-height: 1.45; }
-  .note .source{ font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); margin-top: 6px; }
+    .audit-list {
+      list-style: none;
+      border-top: 1px solid var(--border);
+    }
 
-  .note:nth-child(1){ grid-column: 1 / span 4; }
-  .note:nth-child(2){ grid-column: 6 / span 4; }
-  .note:nth-child(3){ grid-column: 2 / span 5; margin-top: 60px; }
-  .note:nth-child(4){ grid-column: 8 / span 5; margin-top: 30px; }
-  .note:nth-child(5){ grid-column: 1 / span 5; margin-top: 30px; }
-  .note:nth-child(6){ grid-column: 7 / span 5; margin-top: 60px; }
+    .audit-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.18s ease;
+    }
 
-  @media (max-width: 900px){
-    .field-notes{ display:flex; flex-direction:column; gap: 28px; }
-    .note{ margin-top: 0 !important; }
-  }
+    .audit-item:hover { background: rgba(255,255,255,0.4); }
+    .audit-item:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  06 — ARCHITECT (about)
-   * ─────────────────────────────────────────────────────── */
-  .architect{
-    display:grid;
-    grid-template-columns: 1.05fr 1.4fr;
-    gap: 64px;
-    align-items: start;
-  }
-  .portrait-wrap{
-    position: relative;
-    background: var(--paper);
-    padding: 26px;
-    border: 1px solid var(--rule);
-  }
-  .portrait-wrap::after{
-    content:''; position:absolute; inset: 14px;
-    border: 1px solid var(--rule-soft);
-    pointer-events:none;
-  }
-  .portrait-wrap img{
-    display:block;
-    width: 100%;
-    height: auto;
-    filter: grayscale(35%) contrast(1.02) brightness(0.97);
-    mix-blend-mode: multiply;
-  }
-  .portrait-caption{
-    display:grid; grid-template-columns: 1fr auto; gap: 16px;
-    margin-top: 16px;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.14em;
-    color: var(--stone);
-    text-transform: uppercase;
-  }
-  .portrait-caption .name{ color: var(--ink); }
+    .audit-box {
+      width: 28px;
+      height: 28px;
+      margin-top: 2px;
+      border: 1.5px solid var(--light);
+      background: var(--off);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.18s ease, background 0.18s ease;
+      position: relative;
+    }
 
-  .architect .bio .id{
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--stone);
-    margin-bottom: 18px;
-  }
-  .architect .bio h2{
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(40px, 4vw, 64px);
-    line-height: 1.02;
-    letter-spacing: -0.022em;
-    color: var(--ink);
-    margin-bottom: 28px;
-  }
-  .architect .bio h2 em{ font-style: italic; color: var(--graphite); }
-  .architect .bio p{
-    font-family: var(--editor);
-    font-size: 16.5px;
-    line-height: 1.74;
-    color: var(--graphite);
-    max-width: 52ch;
-  }
-  .architect .bio p + p{ margin-top: 16px; }
-  .architect .bio p em{ color: var(--ink); }
+    .audit-item:hover .audit-box { border-color: var(--gold); }
 
-  .bio-grid{
-    margin-top: 36px;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px 30px;
-    padding-top: 24px;
-    border-top: 1px solid var(--rule);
-  }
-  .bio-grid .item{ display:flex; flex-direction: column; gap: 4px; }
-  .bio-grid .item .k{ font-family: var(--sans); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
-  .bio-grid .item .v{ font-family: var(--editor); font-style: italic; font-size: 14.5px; color: var(--ink); }
+    .audit-box svg {
+      width: 18px;
+      height: 18px;
+      opacity: 0;
+      transform: scale(0.7);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
 
-  @media (max-width: 1000px){
-    .architect{ grid-template-columns: 1fr; }
-  }
+    .audit-item.checked .audit-box {
+      border-color: var(--gold);
+      background: var(--gold);
+    }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  07 — CONTACT / CODA
-   * ─────────────────────────────────────────────────────── */
-  .coda{
-    background:
-      linear-gradient(180deg, var(--paper) 0%, var(--off) 100%);
-    padding: 140px 80px;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    position: relative;
-    z-index: 2;
-  }
-  .coda .inner{
-    max-width: 1240px; margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 80px;
-    align-items: end;
-  }
-  .coda h2.display{
-    font-size: clamp(46px, 5.6vw, 96px);
-    letter-spacing: -0.024em;
-    line-height: 1.0;
-  }
-  .coda h2.display em{ font-style: italic; color: var(--graphite); }
-  .coda .convene{
-    display: flex; flex-direction:column; gap: 24px;
-    align-items: start;
-  }
-  .coda .convene .label{
-    font-family: var(--sans);
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone);
-  }
-  .coda .convene .email{
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(22px, 2vw, 30px);
-    color: var(--ink);
-    line-height: 1.2;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 4px;
-    transition: color .3s var(--ease), border-color .3s var(--ease);
-  }
-  .coda .convene .email:hover{ color: var(--oxide); border-color: var(--oxide); }
-  .coda .convene p.editor{
-    font-size: 15.5px; max-width: 38ch; color: var(--graphite);
-  }
-  @media (max-width: 1000px){
-    .coda{ padding: 80px 28px; }
-    .coda .inner{ grid-template-columns: 1fr; gap: 40px; }
-  }
+    .audit-item.checked .audit-box svg {
+      opacity: 1;
+      transform: scale(1);
+    }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  FOOTER — colophon
-   * ─────────────────────────────────────────────────────── */
-  footer.colophon{
-    position: relative; z-index: 2;
-    padding: 56px 80px 80px;
-    background: var(--canvas);
-    display:grid;
-    grid-template-columns: 1.2fr 1fr 1fr 1fr;
-    gap: 36px;
-    border-top: 1px solid var(--rule-soft);
-  }
-  footer.colophon h4{
-    font-family: var(--sans);
-    font-size: 10.5px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 14px;
-    font-weight: 600;
-  }
-  footer.colophon p, footer.colophon a, footer.colophon li{
-    font-family: var(--editor);
-    font-size: 13.5px;
-    line-height: 1.65;
-    color: var(--graphite);
-  }
-  footer.colophon ul{ list-style: none; display:flex; flex-direction:column; gap: 4px; }
-  footer.colophon a:hover{ color: var(--oxide); }
-  footer.colophon .markline{
-    font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--ink);
-    margin-bottom: 10px;
-  }
-  footer.colophon .micro{
-    margin-top: 22px;
-    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; color: var(--stone);
-  }
-  @media (max-width: 900px){
-    footer.colophon{ grid-template-columns: 1fr 1fr; padding: 40px 28px; }
-  }
+    .audit-text strong {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      line-height: 1.3;
+      color: var(--black);
+      display: block;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.005em;
+    }
 
-  /* ─────────────────────────────────────────────────────── *
-   *  REVEAL — atmospheric fade on view
-   * ─────────────────────────────────────────────────────── */
-  .reveal{
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 1.4s var(--ease), transform 1.4s var(--ease);
-  }
-  .reveal.in{ opacity: 1; transform: none; }
-  .reveal.d1{ transition-delay: .08s; }
-  .reveal.d2{ transition-delay: .16s; }
-  .reveal.d3{ transition-delay: .26s; }
-  .reveal.d4{ transition-delay: .36s; }
-  .reveal.d5{ transition-delay: .48s; }
+    .audit-text span {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
 
-  @media (prefers-reduced-motion: reduce){
-    .reveal, .reveal.in{ opacity:1; transform:none; transition: none; }
-    .status .pulse .led{ animation: none; }
-  }
-</style>
+    .audit-item.checked .audit-text strong {
+      color: var(--gray);
+      text-decoration: line-through;
+      text-decoration-color: var(--gold);
+      text-decoration-thickness: 1.5px;
+    }
+
+    .audit-summary {
+      margin-top: 2.5rem;
+      padding: 2rem 0 0;
+      border-top: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .audit-summary.show { opacity: 1; transform: translateY(0); }
+
+    .audit-summary p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.45rem;
+      line-height: 1.45;
+      color: var(--black);
+      margin-bottom: 1.5rem;
+      max-width: 42ch;
+    }
+
+    .audit-summary.complete p { color: var(--green); }
+
+    .audit-cta {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding-bottom: 4px;
+      border-bottom: 1.5px solid var(--gold);
+      transition: color 0.2s;
+    }
+    .audit-cta:hover { color: var(--gold); }
+
+    /* ── OFFER ── */
+    .offer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .offer-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+    }
+
+    .offer-h2 em { font-style: italic; color: var(--gold); }
+
+    .offer-lead {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      line-height: 1.55;
+      color: var(--black);
+    }
+
+    .offer-body p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--black);
+      margin-bottom: 1.25rem;
+    }
+
+    .offer-body p.italic {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--gray);
+    }
+
+    .offer-body p:last-child {
+      margin-top: 1.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.35rem;
+      color: var(--black);
+      margin-bottom: 0;
+    }
+
+    /* ── WHO IT'S FOR ── */
+    .who-lead {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--black);
+      max-width: 38ch;
+      margin-bottom: 3.5rem;
+    }
+
+    .who-lead em { font-style: italic; color: var(--gold); }
+
+    .who-row {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--black);
+      margin-bottom: 3.5rem;
+      letter-spacing: -0.005em;
+    }
+
+    .who-row .sep {
+      color: var(--gold);
+      font-style: normal;
+      margin: 0 0.6rem;
+    }
+
+    .who-kicker {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.6vw, 2rem);
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--black);
+      max-width: 26ch;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── HOW IT WORKS ── */
+    .step {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 3rem;
+      padding: 2.75rem 0;
+      border-top: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .step:last-of-type { border-bottom: 1px solid var(--border); }
+
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .step-body p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--black);
+    }
+
+    /* ── IN PRACTICE ── */
+    .practice-body {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      line-height: 1.55;
+      color: var(--black);
+      max-width: 56ch;
+      margin-bottom: 2.25rem;
+    }
+
+    .practice-kicker {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.85rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 1.2;
+      margin-bottom: 2.5rem;
+    }
+
+    .practice-caption {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 2rem;
+    }
+
+    .practice-link {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding-bottom: 3px;
+      border-bottom: 1px solid var(--gold);
+      transition: color 0.2s;
+    }
+    .practice-link:hover { color: var(--gold); }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--warm);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+      filter: saturate(0.92);
+      display: block;
+    }
+
+    .about-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .about-name em { font-style: italic; color: var(--gold); }
+
+    .about-role {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 2.25rem;
+    }
+
+    .about-body p {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: var(--black);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-body p:last-child { margin-bottom: 0; }
+
+    .about-body em { font-style: italic; color: var(--gold); }
+    .about-body strong { font-weight: 600; }
+
+    /* ── CLOSING ── */
+    .closing {
+      padding: 7rem 3rem 5rem;
+      text-align: left;
+    }
+
+    .closing h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .closing p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--gray);
+      margin-bottom: 3rem;
+    }
+
+    .closing-email {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 400;
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--gold);
+      padding-bottom: 4px;
+      transition: color 0.2s;
+    }
+
+    .closing-email:hover { color: var(--gold); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 3rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.72rem;
+      color: var(--mid);
+      letter-spacing: 0.06em;
+    }
+
+    footer .foot-left {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    footer a { color: var(--gray); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .hero-h1 .word, .hero-sub, .hero-cta, .audit-summary {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 820px) {
+      section { padding: 4rem 1.5rem; }
+      .hero { padding: 4.5rem 1.5rem 4rem; }
+      nav { padding: 1rem 1.5rem; }
+      .band { padding: 3rem 1.5rem; }
+      .closing { padding: 5rem 1.5rem 3.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+
+      .problem-grid,
+      .offer-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .audit-head { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+
+      .audit-item {
+        grid-template-columns: 40px 1fr;
+        gap: 1rem;
+        padding: 1.25rem 0;
+      }
+
+      .audit-box { width: 24px; height: 24px; }
+      .audit-box svg { width: 15px; height: 15px; }
+
+      .step {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        padding: 2rem 0;
+      }
+
+      .about-photo { max-width: 280px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ──────────── CHROME ──────────── -->
-<nav class="frame-nav">
-  <div class="left">
-    <a href="#frame-00" class="markk">Foundation Forward<span style="display:inline-block;width:6px"></span><span class="dot"></span></a>
-  </div>
-  <div class="right">
-    <a href="#frame-02" class="meta nav-link hide-sm">Principles</a>
-    <a href="#frame-03" class="meta nav-link hide-sm">Architecture</a>
-    <a href="#frame-04" class="meta nav-link hide-sm">Engagements</a>
-    <a href="#frame-06" class="meta nav-link hide-sm">Architect</a>
-    <span class="clock" id="clock">— —:— —</span>
-    <a href="#coda" class="meta nav-link" style="color:var(--ink); border-bottom:1px solid var(--ink); padding-bottom:2px;">Convene</a>
-  </div>
+<!-- NAV -->
+<nav>
+  <a href="#top" class="nav-name">Foundation Forward</a>
+  <a href="mailto:klohr@foundationforward.com" class="nav-cta">Let's talk →</a>
 </nav>
 
-<aside class="margin-rail" aria-hidden="true">
-  <div class="vline"></div>
-  <div class="rotated">Foundation Forward · OS·01 · Edition MMXXVI</div>
-  <div class="vline"></div>
-</aside>
-
-<!-- ──────────── 00 — OPENING ──────────── -->
-<section id="frame-00" class="frame opening">
-
-  <div class="col-left reveal">
-    <div class="marker">
-      <span class="mono">Frame 00 — Opening</span>
-      <span class="marker-title">A practice, not a vendor.</span>
-    </div>
-    <p class="editor">Foundation Forward is the operating practice of <em>Kimberly Lohr</em>. It builds the substrate underneath founder-led learning businesses — the part the audience never sees, and the part the founder cannot stop depending on.</p>
-
-    <div class="status reveal d2">
-      <div class="row">
-        <span class="k">Practice</span>
-        <span class="v ital">Foundation Forward</span>
-      </div>
-      <div class="row">
-        <span class="k">Architect</span>
-        <span class="v">Kimberly Lohr</span>
-      </div>
-      <div class="row">
-        <span class="k">Domain</span>
-        <span class="v">Learning Systems · Founder Practices</span>
-      </div>
-      <div class="row">
-        <span class="k">Edition</span>
-        <span class="v">MMXXVI · Vol. 01</span>
-      </div>
-      <div class="row">
-        <span class="k">Status</span>
-        <span class="v"><span class="pulse"><span class="led"></span>Operating · accepting two engagements</span></span>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-mid">
-    <h1 class="display reveal">
-      A quiet<br/>
-      architecture<br/>
-      for businesses<br/>
-      <span class="ital">built around</span><br/>
-      a single mind.
-    </h1>
-
-    <p class="editor lede reveal d2">
-      Beneath every founder-led practice is a system that either holds or doesn't. The work here is the system — the curriculum, the cohort, the tool, the content engine, the train-the-trainer layer — designed so the founder's expertise can leave the room without leaving.
-    </p>
-
-    <div class="scroll-cue reveal d3">
-      <span class="line"></span>
-      <span>Continue · scroll</span>
-    </div>
-  </div>
-
-  <div class="col-right reveal d4">
-    <!-- intentionally light — negative space -->
-    <div style="border-left:1px solid var(--rule-soft); padding-left: 20px; padding-top: 56px;">
-      <p class="mono" style="margin-bottom: 10px;">Currently<br/>under construction</p>
-      <p class="editor" style="font-size:14px; max-width: 22ch;">
-        Two engagements active. Field notes in revision. A third dossier opens in the spring.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ──────────── 01 — PREMISE ──────────── -->
-<section id="frame-01" class="frame lg">
-  <header class="sec-head reveal">
-    <span class="idx">01 · Premise</span>
-    <h2 class="title">The thing beneath the thing.</h2>
-    <span class="gloss">On why most founder businesses break at the same place.</span>
-  </header>
-
-  <div class="premise-body">
-    <aside class="marginalia reveal">
-      <span class="m-label">Working assumption</span>
-      <p>The bottleneck in a founder-led business is rarely the founder's expertise. It is the absence of a structure that lets the expertise travel.</p>
-      <span class="m-label" style="margin-top:6px;">Adjacent assumption</span>
-      <p>A learning experience is not content. It is a sequence of decisions a person practices until those decisions become reflexes.</p>
-    </aside>
-
-    <div class="premise-column reveal d2">
-      <p>Most founder-led businesses are held in place by one person's attention. The expertise is real. The clients are real. The work is real. What is missing is the architecture that lets any of it operate without the founder in the room.</p>
-      <p>That missing layer is <em>not a brand, not a funnel, not a tech stack.</em> It is the operating substrate — the curriculum a trainer can teach without you, the tool a player can run without supervision, the content engine that produces audience data while you sleep, the train-the-trainer layer that turns one of you into many.</p>
-      <p>Built carelessly, this layer becomes a graveyard of half-finished assets. Built deliberately, it becomes the part of the practice that compounds.</p>
-
-      <div class="premise-pull reveal d3">
-        <em>Most clients arrive asking for a course. The right answer is almost never a course.</em>
-      </div>
-    </div>
-
-    <aside class="premise-right reveal d4">
-      <div class="stamp">Filed · 2026</div>
-      <div class="stamp">Class · Operating Principle</div>
-      <div class="stamp">Ref · FF/01/PREMISE</div>
-    </aside>
-  </div>
-</section>
-
-<!-- ──────────── 02 — PRINCIPLES ──────────── -->
-<section id="frame-02" class="frame lg" style="padding-top: 40px;">
-  <header class="sec-head reveal">
-    <span class="idx">02 · Operating Principles</span>
-    <h2 class="title">Six lenses the work moves through.</h2>
-    <span class="gloss">Each principle resists a more popular instinct.</span>
-  </header>
-
-  <div class="principles">
-    <article class="principle reveal">
-      <div class="num">P.01</div>
-      <div>
-        <h3>Start with the <em>learner</em>, not the content.</h3>
-        <p>The right starting point is never the syllabus. It is the person, the decision they are unable to make yet, and the most direct path to making it become reflex. Content is the consequence of that path, not its origin.</p>
-        <p class="tension"><strong>Resists</strong> the impulse to package what you already know.</p>
-      </div>
-    </article>
-
-    <article class="principle reveal d1">
-      <div class="num">P.02</div>
-      <div>
-        <h3>Design the system, <em>not the asset.</em></h3>
-        <p>A single course is fragile. A system — a learning path, a content engine, a train-the-trainer layer — keeps producing value after the build is done. The question is never <em>what should we make</em>; it is <em>what should keep working</em>.</p>
-        <p class="tension"><strong>Resists</strong> the deliverable-shaped brief.</p>
-      </div>
-    </article>
-
-    <article class="principle reveal">
-      <div class="num">P.03</div>
-      <div>
-        <h3>Build so the founder <em>can leave the room.</em></h3>
-        <p>If the practice depends on the founder showing up, the practice is the founder. Every artifact is judged by a single test: can someone trained, not cloned, deliver this without losing what makes it work?</p>
-        <p class="tension"><strong>Resists</strong> the heroic founder model.</p>
-      </div>
-    </article>
-
-    <article class="principle reveal d1">
-      <div class="num">P.04</div>
-      <div>
-        <h3>Let every artifact <em>do more than one job.</em></h3>
-        <p>A post is also a tool. A tool is also research. A research signal is also content for the next module. Anything built carries multiple loads — for the audience, for the practice, for the system's own learning about itself.</p>
-        <p class="tension"><strong>Resists</strong> the single-purpose deliverable.</p>
-      </div>
-    </article>
-
-    <article class="principle reveal">
-      <div class="num">P.05</div>
-      <div>
-        <h3>Treat structure as <em>care</em>.</h3>
-        <p>Structure is not what gets in the way of warmth. It is how warmth survives scale. The trainer who has clarity can be human in the room. The learner who has scaffolding can be brave inside it.</p>
-        <p class="tension"><strong>Resists</strong> the false choice between systems and soul.</p>
-      </div>
-    </article>
-
-    <article class="principle reveal d1">
-      <div class="num">P.06</div>
-      <div>
-        <h3>Move at the pace of the <em>practice</em>, not the platform.</h3>
-        <p>Launch dates are imposed; readiness is earned. The system is finished when the practice can operate it — not when the calendar says so. Tempo is a design choice, and the right tempo is almost always slower than the founder wants.</p>
-        <p class="tension"><strong>Resists</strong> the conversion-funnel calendar.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- ──────────── 03 — FRAMEWORK / ARCHITECTURE ──────────── -->
-<section id="frame-03" class="frame lg">
-  <header class="sec-head reveal">
-    <span class="idx">03 · System Architecture</span>
-    <h2 class="title">Four layers, observed from below.</h2>
-    <span class="gloss">A reading of how a learning practice actually stands up.</span>
-  </header>
-
-  <div class="framework">
-    <div class="legend reveal">
-      <p>Every learning business looks like a course from the outside. From the inside, it is four layers stacked. Most of the work happens in the bottom two — the layers no client ever asks for.</p>
-      <p>The diagram is not metaphor. It is the order in which the work is actually built. Skipping a layer is the most common reason a launch holds together for six weeks and then quietly stops.</p>
-      <div class="legend-meta">
-        <span class="k">Discipline</span><span>Learning Experience Design</span>
-        <span class="k">Scope</span><span>Strategy → Build → Handover</span>
-        <span class="k">Form</span><span>Diagrammatic, four-layer</span>
-        <span class="k">Read in</span><span>Bottom · Up</span>
-      </div>
-    </div>
-
-    <div class="diagram reveal d2">
-      <div class="spine"></div>
-
-      <div class="layer">
-        <div class="lyr-num">L · IV</div>
-        <div class="lyr-title">Surface<small>What the world meets</small></div>
-        <div class="lyr-body">
-          <ul>
-            <li>Cohort sessions, posts, lessons, drills</li>
-            <li>The Substack, the workshop, the open module</li>
-            <li>What clients believe the practice is</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="layer">
-        <div class="lyr-num">L · III</div>
-        <div class="lyr-title">Interface<small>How the work is delivered</small></div>
-        <div class="lyr-body">
-          <ul>
-            <li>Curriculum architecture &amp; learning paths</li>
-            <li>Train-the-trainer scripts &amp; rituals</li>
-            <li>Tools the learner uses unsupervised</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="layer">
-        <div class="lyr-num">L · II</div>
-        <div class="lyr-title">Logic<small>The decisions encoded</small></div>
-        <div class="lyr-body">
-          <ul>
-            <li>Sequencing, feedback rules, decision scaffolds</li>
-            <li>Where to make the learner choose, and what to reveal after</li>
-            <li>How the practice learns from its own use</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="layer">
-        <div class="lyr-num">L · I</div>
-        <div class="lyr-title">Substrate<small>The raw material</small></div>
-        <div class="lyr-body">
-          <ul>
-            <li>The founder's expertise, in its actual texture</li>
-            <li>The learner's real situation and the decision they cannot yet make</li>
-            <li>The business problem the system is responsible for</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ──────────── 04 — ENGAGEMENTS / DOSSIERS ──────────── -->
-<section id="frame-04" class="frame lg">
-  <header class="sec-head reveal">
-    <span class="idx">04 · Engagements</span>
-    <h2 class="title">Three dossiers from the field.</h2>
-    <span class="gloss">Selected, abridged, filed under operating evidence.</span>
-  </header>
-
-  <article class="dossier reveal">
-    <div class="file-id">
-      <div class="ref">DOSSIER · 01</div>
-      <div class="seq">01</div>
-      <div class="ref">Filed · 2021 — 2024</div>
-      <span class="status-pill archived">Built · Now operating without us</span>
-    </div>
-
-    <div class="narrative">
-      <div class="client-line">Johns Hopkins University · Center for Technology in Education</div>
-      <h3>From slide decks to a <em>six-state training system</em> that runs without us in the room.</h3>
-      <p>Educators across multiple states needed training on a complex assessment system. Every new cohort, every new hire, required the team to be there. The work could not scale without breaking the consistency it depended on.</p>
-      <p>What we constructed was a core training architecture with distinct learning paths for six states, wrapped in a train-the-trainer model and extended with asynchronous modules as states asked for more flexibility. The system flexed without losing its integrity.</p>
-    </div>
-
-    <div class="ledger">
-      <div class="row"><span class="k">Situation</span><span class="v">Multi-state training bottlenecked on a single team's presence.</span></div>
-      <div class="row"><span class="k">Constructed</span><span class="v">Core curriculum + <em>six state-specific paths</em> + train-the-trainer + async modules.</span></div>
-      <div class="row"><span class="k">What persists</span><span class="v">Trainers onboard staff independently. The team is no longer the bottleneck.</span></div>
-      <div class="row"><span class="k">Instruments</span>
-        <div class="instruments">
-          <span>Curriculum Architecture</span>
-          <span>Train-the-Trainer</span>
-          <span>Learning Paths</span>
-          <span>Async Modules</span>
-          <span>Multi-State Adaptation</span>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <article class="dossier reveal">
-    <div class="file-id">
-      <div class="ref">DOSSIER · 02</div>
-      <div class="seq">02</div>
-      <div class="ref">Opened · 2024 — Active</div>
-      <span class="status-pill">Operating · in iteration</span>
-    </div>
-
-    <div class="narrative">
-      <div class="client-line">The CoLLab Field Hockey</div>
-      <h3>A content engine that <em>grows the audience</em>, builds the tool library, and scopes the future course at the same time.</h3>
-      <p>Four hundred Substack subscribers. Deep expertise. No system beneath any of it. What was needed was a structure that built the audience consistently and produced the evidence a paid product would later require.</p>
-      <p>What we constructed is a thirty-two week content system across four coaching pillars. Every post serves two audiences at once — coaches reading the Substack and players running interactive drills before practice. A branded tool library compounds with each post; an audience data layer compounds underneath it.</p>
-    </div>
-
-    <div class="ledger">
-      <div class="row"><span class="k">Situation</span><span class="v">Expertise without architecture; a product future with no evidence base.</span></div>
-      <div class="row"><span class="k">Constructed</span><span class="v">32-week content system, dual-audience drills, growing tool library, signal-capture layer.</span></div>
-      <div class="row"><span class="k">What persists</span><span class="v"><em>Audience research and product evidence accrue as a byproduct of publishing.</em></span></div>
-      <div class="row"><span class="k">Instruments</span>
-        <div class="instruments">
-          <span>Content Strategy</span>
-          <span>Interactive Tool Design</span>
-          <span>Library Architecture</span>
-          <span>Substack System</span>
-          <span>Audience Signal</span>
-        </div>
-      </div>
-      <div class="row"><span class="k">Open file</span>
-        <a class="ext-link" href="foundation_forward_portfolio.html">Read the deeper dossier <span class="arr">↗</span></a>
-      </div>
-    </div>
-  </article>
-
-  <article class="dossier reveal">
-    <div class="file-id">
-      <div class="ref">DOSSIER · 03</div>
-      <div class="seq">03</div>
-      <div class="ref">Opened · 2026 — In development</div>
-      <span class="status-pill dev">In construction</span>
-    </div>
-
-    <div class="narrative">
-      <div class="client-line">Iris B Photography</div>
-      <h3>Turning wildlife expertise into <em>interactive experiences</em> that teach animal behavior before the shot.</h3>
-      <p>Wildlife photography instruction goes beyond technique. It depends on reading behavior in the field — a skill that cannot be taught from a static post. The learning has to feel like being there, and it has to fit on a phone in someone's hand.</p>
-      <p>What we are constructing is a growing library of mini learning experiences built around real field scenarios. The learner reads what an animal is doing, makes a decision, receives feedback connecting the behavior to the photographic moment. Short. Specific. Cumulative.</p>
-    </div>
-
-    <div class="ledger">
-      <div class="row"><span class="k">Situation</span><span class="v">Field skill that cannot survive in a slide, an article, or a video.</span></div>
-      <div class="row"><span class="k">Constructing</span><span class="v">Scenario-based behavior drills; a bundle-ready library for course or workshop use.</span></div>
-      <div class="row"><span class="k">Will persist</span><span class="v">A modular asset base that can be sold, taught, or used as a lead instrument.</span></div>
-      <div class="row"><span class="k">Instruments</span>
-        <div class="instruments">
-          <span>Scenario Design</span>
-          <span>Interactive Tools</span>
-          <span>Adult Learners</span>
-          <span>Library Architecture</span>
-        </div>
-      </div>
-    </div>
-  </article>
-</section>
-
-<!-- ──────────── 05 — FIELD NOTES ──────────── -->
-<section id="frame-05" class="frame lg">
-  <header class="sec-head reveal">
-    <span class="idx">05 · Field Notes</span>
-    <h2 class="title">Marginalia from the practice.</h2>
-    <span class="gloss">Observations kept between engagements.</span>
-  </header>
-
-  <div class="field-notes">
-    <div class="note reveal">
-      <span class="n-num">N · 01</span>
-      <p><em>If the launch date is the loudest thing in the room, the work is already losing.</em></p>
-      <p>Speed is usually a substitute for clarity. Clarity is the only thing that survives the second cohort.</p>
-      <span class="source">From a project review, 2024</span>
-    </div>
-
-    <div class="note reveal d1">
-      <span class="n-num">N · 02</span>
-      <p><em>A founder describing the audience in detail almost never needs a strategist; they need a builder.</em></p>
-      <p>The opposite is also true and far more common.</p>
-      <span class="source">Filed under: scoping conversations</span>
-    </div>
-
-    <div class="note reveal">
-      <span class="n-num">N · 03</span>
-      <p><em>Every learning tool is a question about trust.</em></p>
-      <p>How much do you trust the learner to choose? How much do you trust the trainer to deviate? The answers shape every interaction the system will ever have.</p>
-      <span class="source">From an internal memo</span>
-    </div>
-
-    <div class="note reveal d1">
-      <span class="n-num">N · 04</span>
-      <p><em>Most curricula collapse not at the content layer but at the handover.</em></p>
-      <p>What gets built carefully and handed off casually is no longer built carefully.</p>
-      <span class="source">Train-the-trainer post-mortem, 2023</span>
-    </div>
-
-    <div class="note reveal">
-      <span class="n-num">N · 05</span>
-      <p><em>A small business does not need a small system. It needs a system small enough to operate alone — and large enough to hold what it knows.</em></p>
-      <span class="source">Engagement debrief</span>
-    </div>
-
-    <div class="note reveal d1">
-      <span class="n-num">N · 06</span>
-      <p><em>The right tempo is almost always slower than the founder wants and faster than the agency would deliver.</em></p>
-      <p>This is most of the value of the practice.</p>
-      <span class="source">Observed across three engagements</span>
-    </div>
-  </div>
-</section>
-
-<!-- ──────────── 06 — THE ARCHITECT ──────────── -->
-<section id="frame-06" class="frame lg">
-  <header class="sec-head reveal">
-    <span class="idx">06 · The Architect</span>
-    <h2 class="title">A single practitioner, by design.</h2>
-    <span class="gloss">No team. No agency layer. No proxy between you and the work.</span>
-  </header>
-
-  <div class="architect">
-    <figure class="portrait-wrap reveal">
-      <img src="klohr_headshot.jpg" alt="Kimberly Lohr, founder of Foundation Forward Consulting" loading="lazy" />
-      <figcaption class="portrait-caption">
-        <span class="name">Kimberly Lohr</span>
-        <span>Plate · 01</span>
-      </figcaption>
-    </figure>
-
-    <div class="bio reveal d2">
-      <div class="id">Practitioner profile · Foundation Forward</div>
-      <h2>Kimberly <em>Lohr</em></h2>
-      <p>Good design starts with one question: <em>what does this person actually need to be able to do?</em> Not what content needs to be covered. Not what format looks impressive. What does the learner need, and what is the most direct path to get them there?</p>
-      <p>That question leads to experiences that are more focused than people expect and more effective than they thought possible. It also leads to systems — ones that scale, hold more than one purpose at once, and keep working long after the build is done.</p>
-      <p>The work that matters most here is the work done <em>with people who care deeply about what they are building.</em> The coach who has spent twenty years refining her methodology. The director obsessed with getting it right for every child in her center. The photographer who sees what others miss and wants to teach others to see it too.</p>
-      <p>That passion is the raw material. The job of the practice is to build the system around it.</p>
-
-      <div class="bio-grid">
-        <div class="item"><span class="k">Practice</span><span class="v">Foundation Forward · est. 2020</span></div>
-        <div class="item"><span class="k">Discipline</span><span class="v">Learning Experience Design</span></div>
-        <div class="item"><span class="k">Operating from</span><span class="v">Mid-Atlantic · Remote engagements</span></div>
-        <div class="item"><span class="k">Engagement form</span><span class="v">Long-arc, single architect</span></div>
-        <div class="item"><span class="k">Sectors served</span><span class="v">Higher ed · Coaching · Childcare · Independents</span></div>
-        <div class="item"><span class="k">Capacity</span><span class="v">Two concurrent engagements</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ──────────── 07 — CODA / CONTACT ──────────── -->
-<section id="coda" class="coda">
+<!-- HERO -->
+<section class="hero" id="top">
   <div class="inner">
-    <div class="reveal">
-      <div class="meta" style="margin-bottom: 24px;">07 · Convene</div>
-      <h2 class="display">
-        You built<br/>
-        the expertise.<br/>
-        <em>The architecture<br/>
-        is the next move.</em>
-      </h2>
-    </div>
+    <h1 class="hero-h1">
+      <span class="word">Let's</span>
+      <span class="word">get</span>
+      <span class="word">your</span>
+      <span class="word">business</span>
+      <span class="word">working</span>
+      <span class="word"><em>without you</em>.</span>
+    </h1>
+    <p class="hero-sub">You built something real. But if it only works when you're the one doing it, that's not a business. That's a job you can't leave.</p>
+    <a href="mailto:klohr@foundationforward.com" class="hero-cta">Let's talk →</a>
+  </div>
+</section>
 
-    <div class="convene reveal d2">
-      <span class="label">To begin a quiet conversation</span>
-      <a href="mailto:klohr@foundationforwardacademics.com" class="email">klohr@foundationforwardacademics.com</a>
-      <p class="editor">A short note about the practice, the audience, and the part of the business you cannot leave the room on. A reply, in days not minutes.</p>
+<!-- BRAND BAND -->
+<div class="band">
+  <p>You built the expertise. <strong><em>I build everything around it.</em></strong></p>
+</div>
+
+<!-- PROBLEM -->
+<section class="reveal">
+  <div class="inner">
+    <div class="section-label">01 · The Problem</div>
+    <div class="problem-grid">
+      <div>
+        <p class="quote">"Your business is not your life. It's something separate from you, with its own rules and its own purposes. An organism, you might say, that will live or die according to how well it performs its sole function: to find and keep customers."</p>
+        <span class="quote-attr">Michael E. Gerber · The E-Myth Revisited</span>
+      </div>
+      <div class="problem-body">
+        <p>You've probably heard this. Maybe even tried it.</p>
+        <p>You're still the one doing everything.</p>
+        <p>Not because you aren't committed enough. Because his system isn't yours.</p>
+        <p class="problem-kicker">Systems will get you there. <em>Your</em> systems.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ──────────── COLOPHON ──────────── -->
-<footer class="colophon">
-  <div>
-    <div class="markline">Foundation Forward</div>
-    <p>An operating practice for founder-led learning businesses. Designed, built, and quietly maintained by Kimberly Lohr.</p>
-    <p class="micro">© 2026 · Foundation Forward Consulting · All rights reserved</p>
-  </div>
-  <div>
-    <h4>Sections</h4>
-    <ul>
-      <li><a href="#frame-01">Premise</a></li>
-      <li><a href="#frame-02">Operating Principles</a></li>
-      <li><a href="#frame-03">System Architecture</a></li>
-      <li><a href="#frame-04">Engagements</a></li>
-      <li><a href="#frame-06">The Architect</a></li>
+<!-- SELF-AUDIT -->
+<section class="audit reveal">
+  <div class="inner">
+    <div class="section-label">02 · The Self-Audit</div>
+    <div class="audit-head">
+      <h2 class="audit-h2">The foundation of a business that can scale.</h2>
+      <div class="audit-counter"><strong id="auditCount">0</strong> / 5 in place</div>
+    </div>
+    <p class="audit-sub">Check what you already have. We'll show you what's missing.</p>
+
+    <ul class="audit-list" id="auditList">
+      <li class="audit-item" data-key="playbook" data-title="A playbook your team can run">
+        <div class="audit-box" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="audit-text">
+          <strong>A playbook your team can run.</strong>
+          <span>Your way of working, written down, handed off.</span>
+        </div>
+      </li>
+      <li class="audit-item" data-key="onboarding" data-title="An onboarding that doesn't go through you">
+        <div class="audit-box" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="audit-text">
+          <strong>An onboarding that doesn't go through you.</strong>
+          <span>For new hires or new clients. Quality starts before you arrive.</span>
+        </div>
+      </li>
+      <li class="audit-item" data-key="content" data-title="A content rhythm that doesn't need you posting daily">
+        <div class="audit-box" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="audit-text">
+          <strong>A content rhythm that doesn't need you posting daily.</strong>
+          <span>Your audience hears from you on a schedule you set once.</span>
+        </div>
+      </li>
+      <li class="audit-item" data-key="delivery" data-title="A delivery process anyone you've trained can run">
+        <div class="audit-box" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="audit-text">
+          <strong>A delivery process anyone you've trained can run.</strong>
+          <span>Same caliber every time, whether or not you're in the room.</span>
+        </div>
+      </li>
+      <li class="audit-item" data-key="feedback" data-title="A feedback loop that tells you what to build next">
+        <div class="audit-box" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="audit-text">
+          <strong>A feedback loop that tells you what to build next.</strong>
+          <span>Evidence from real use, not guesses from a brainstorm.</span>
+        </div>
+      </li>
     </ul>
+
+    <div class="audit-summary" id="auditSummary" aria-live="polite">
+      <p id="auditMessage"></p>
+      <a id="auditCta" class="audit-cta" href="mailto:klohr@foundationforward.com">Start the conversation →</a>
+    </div>
   </div>
-  <div>
-    <h4>Reference</h4>
-    <ul>
-      <li><a href="foundation_forward_portfolio.html">Full portfolio dossier</a></li>
-      <li><a href="mailto:klohr@foundationforwardacademics.com">Direct correspondence</a></li>
-    </ul>
+</section>
+
+<!-- OFFER -->
+<section class="reveal">
+  <div class="inner">
+    <div class="section-label">03 · The Offer</div>
+    <div class="offer-grid">
+      <div>
+        <h2 class="offer-h2">The <em>Foundation Build</em>.</h2>
+        <p class="offer-lead">I sit with you to understand how your work actually works. Then I build the tools and systems that let it keep working when you're not in the room.</p>
+      </div>
+      <div class="offer-body">
+        <p class="italic">Not a template. Not someone else's framework.</p>
+        <p>Built from what's already in your head. The way you actually work.</p>
+        <p>A playbook. A 10-week follow-up sequence. A curriculum. A content system. Whatever your business needs to keep running.</p>
+        <p>One quarterly engagement. One finished foundation.</p>
+      </div>
+    </div>
   </div>
-  <div>
-    <h4>Colophon</h4>
-    <p>Set in <em>Cormorant Garamond</em>, <em>Spectral</em>, and <em>Inter</em>. Composed for slow reading. Best viewed on a wide screen, with time.</p>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="reveal" style="background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="inner">
+    <div class="section-label">04 · Who it's for</div>
+    <p class="who-lead">Expert practitioners with thriving small businesses. The field varies. The shape of the problem doesn't — everything runs through you.</p>
+    <p class="who-row">
+      Coaches<span class="sep">·</span>Realtors<span class="sep">·</span>Photographers<span class="sep">·</span>Consultants<span class="sep">·</span>Childcare Directors
+    </p>
+    <p class="who-kicker">If someone else's system was going to work for you, it would have by now.</p>
   </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="reveal">
+  <div class="inner">
+    <div class="section-label">05 · How it works</div>
+
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <h3 class="step-title">Extract.</h3>
+        <p>We sit together. I ask the right questions and get what's in your head, even when you can't quite articulate it yourself. You've already figured it out. I find it.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <h3 class="step-title">Build.</h3>
+        <p>I build the artifact. A playbook. A 10-week follow-up sequence. A curriculum. A content system. Whatever your business needs to keep running. Built the way you actually work, not the way someone else does.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <h3 class="step-title">Run.</h3>
+        <p>Your business runs without you in the room. What we built keeps doing the work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IN PRACTICE -->
+<section class="reveal" style="background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="inner">
+    <div class="section-label">06 · In practice</div>
+    <p class="practice-body">A business coach with years of methodology that had never been written down. We're building her curriculum systematically on Substack. Real, publishable content now. A course she can sell when it's ready.</p>
+    <p class="practice-kicker"><em>One effort. Two products.</em></p>
+    <p class="practice-caption">Current client · Foundation Forward Consulting</p>
+    <a href="foundation_forward_portfolio.html" class="practice-link">See the deeper portfolio →</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about reveal">
+  <div class="inner">
+    <div class="section-label">07 · The Architect</div>
+    <div class="about-grid">
+      <img src="klohr_headshot.jpg" alt="Kimberly Lohr" class="about-photo" />
+      <div>
+        <h2 class="about-name">Kimberly <em>Lohr</em></h2>
+        <p class="about-role">Business Architect · Foundation Forward Consulting</p>
+        <div class="about-body">
+          <p>I trained as an instructional designer. The job taught me how to sit with an expert and get what they know out of their head and into a working artifact someone else can use.</p>
+          <p>I do that for small business owners now. The expertise is already there. The shape of a business around it is the part that's missing.</p>
+          <p>The question that drives the work: <em>what would your business look like if it didn't depend on you to run?</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing reveal">
+  <div class="inner">
+    <h2>Ready to build yours?</h2>
+    <p>One conversation to see if it's a fit.</p>
+    <a href="mailto:klohr@foundationforward.com" class="closing-email">klohr@foundationforward.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-left">Foundation Forward · Kimberly Lohr · Business Architect</span>
+  <span>© 2026 · <a href="mailto:klohr@foundationforward.com">klohr@foundationforward.com</a></span>
 </footer>
 
 <script>
-  // ── Quiet clock in the top-right of the nav. Updates each minute, no fanfare.
-  (function clock(){
-    const el = document.getElementById('clock');
-    if(!el) return;
-    function tick(){
-      const d = new Date();
-      const hh = String(d.getHours()).padStart(2,'0');
-      const mm = String(d.getMinutes()).padStart(2,'0');
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone.split('/').pop().replace(/_/g,' ');
-      el.textContent = `${hh}:${mm} · ${tz}`;
-    }
-    tick();
-    setInterval(tick, 30 * 1000);
-  })();
+  // Hero stagger
+  (function () {
+    const words = document.querySelectorAll('.hero-h1 .word');
+    const sub = document.querySelector('.hero-sub');
+    const cta = document.querySelector('.hero-cta');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ── Atmospheric reveal — single-shot, slow, low frequency.
-  (function reveal(){
-    const els = document.querySelectorAll('.reveal');
-    if(!('IntersectionObserver' in window)){
-      els.forEach(e => e.classList.add('in'));
+    if (reduce) {
+      words.forEach(w => w.classList.add('show'));
+      if (sub) sub.classList.add('show');
+      if (cta) cta.classList.add('show');
       return;
     }
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
+
+    words.forEach((w, i) => setTimeout(() => w.classList.add('show'), 80 + i * 110));
+    setTimeout(() => sub && sub.classList.add('show'), 80 + words.length * 110 + 100);
+    setTimeout(() => cta && cta.classList.add('show'), 80 + words.length * 110 + 350);
+  })();
+
+  // Scroll reveal
+  (function () {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+      return;
+    }
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    els.forEach(e => io.observe(e));
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  })();
+
+  // Self-audit
+  (function () {
+    const items = Array.from(document.querySelectorAll('.audit-item'));
+    const counter = document.getElementById('auditCount');
+    const summary = document.getElementById('auditSummary');
+    const message = document.getElementById('auditMessage');
+    const cta = document.getElementById('auditCta');
+
+    function lower(s) { return s.charAt(0).toLowerCase() + s.slice(1); }
+
+    function update() {
+      const checked = items.filter(i => i.classList.contains('checked'));
+      const missing = items.filter(i => !i.classList.contains('checked'));
+      counter.textContent = String(checked.length);
+
+      const interacted = items.some(i => i.dataset.touched === '1');
+      if (!interacted) {
+        summary.classList.remove('show', 'complete');
+        return;
+      }
+
+      const missingTitles = missing.map(m => m.dataset.title);
+      let text = '';
+      let subject = 'Foundation Build — let’s talk';
+
+      if (missing.length === 0) {
+        text = 'You’ve got the foundation. Want me to pressure-test it? Let’s talk.';
+        summary.classList.add('complete');
+        subject = 'Foundation Build — pressure-testing what I have';
+      } else if (missing.length === 1) {
+        text = 'You’re one piece away. The missing piece is ' + lower(missingTitles[0]) + '. Let’s build it.';
+        summary.classList.remove('complete');
+        subject = 'Foundation Build — missing: ' + missingTitles[0];
+      } else if (missing.length === 2) {
+        text = 'Two pieces missing: ' + lower(missingTitles[0]) + ', and ' + lower(missingTitles[1]) + '. Let’s build them.';
+        summary.classList.remove('complete');
+        subject = 'Foundation Build — missing: ' + missingTitles.join('; ');
+      } else {
+        text = 'You’re carrying the business. Let’s build the foundation underneath it.';
+        summary.classList.remove('complete');
+        subject = 'Foundation Build — missing: ' + missingTitles.join('; ');
+      }
+
+      message.textContent = text;
+      cta.setAttribute('href', 'mailto:klohr@foundationforward.com?subject=' + encodeURIComponent(subject));
+      summary.classList.add('show');
+    }
+
+    items.forEach(item => {
+      item.setAttribute('role', 'button');
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('aria-pressed', 'false');
+
+      item.addEventListener('click', function () {
+        item.dataset.touched = '1';
+        item.classList.toggle('checked');
+        item.setAttribute('aria-pressed', item.classList.contains('checked') ? 'true' : 'false');
+        update();
+      });
+
+      item.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          item.click();
+        }
+      });
+    });
   })();
 </script>
+
 </body>
 </html>
