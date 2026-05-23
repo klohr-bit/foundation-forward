@@ -328,57 +328,6 @@
       margin-bottom: 2.5rem;
     }
 
-    /* ── PROBLEM ── */
-    .problem-card {
-      background: var(--panel);
-      border-radius: var(--radius-lg);
-      padding: clamp(2rem, 4vw, 3.5rem);
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: clamp(2rem, 4vw, 4rem);
-      align-items: center;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-    }
-
-    .pull {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(1.2rem, 1.9vw, 1.55rem);
-      line-height: 1.45;
-      color: var(--ink);
-      margin-bottom: 1.25rem;
-    }
-
-    .pull-attr {
-      font-family: 'Epilogue', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--mid);
-    }
-
-    .problem-body p {
-      font-size: 1.05rem;
-      line-height: 1.65;
-      color: var(--ink);
-      margin-bottom: 1rem;
-    }
-
-    .problem-kicker {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
-      line-height: 1.25;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-      margin-top: 1.75rem;
-      padding-top: 1.75rem;
-      border-top: 1px solid var(--rule-soft);
-      max-width: 24ch;
-    }
-    .problem-kicker .accent { color: var(--plum); }
-
     /* ── AUDIT ── */
     .audit-wrap { padding: clamp(4rem, 7vw, 6rem) 0; }
 
@@ -576,172 +525,37 @@
       line-height: 1.55;
     }
 
-    .offer-foot {
+    .steps-inline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      color: var(--plum);
+      margin-top: -0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .offer-foot-italic {
       margin-top: 2rem;
       padding-top: 2rem;
       border-top: 1px solid var(--rule-soft);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.1rem;
+      line-height: 1.4;
+      color: var(--gray);
+      max-width: 36ch;
+      margin-bottom: 0.85rem;
+    }
+
+    .offer-foot {
       font-family: 'Playfair Display', serif;
       font-weight: 600;
       font-size: 1.35rem;
       letter-spacing: -0.01em;
       color: var(--ink);
-    }
-
-    /* ── WHO ── */
-    .who-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .who-card {
-      background: var(--panel);
-      border-radius: var(--radius-md);
-      padding: 1.5rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      min-height: 140px;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-      transition: transform 0.15s ease;
-    }
-    .who-card:hover { transform: translateY(-3px); }
-
-    .who-card .num {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--plum);
-    }
-
-    .who-card .name {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: 1.15rem;
-      line-height: 1.2;
-      letter-spacing: -0.005em;
-      color: var(--ink);
-      margin-top: auto;
-    }
-
-    .who-kicker {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 500;
-      font-size: clamp(1.5rem, 3vw, 2.4rem);
-      line-height: 1.2;
-      letter-spacing: -0.015em;
-      color: var(--ink);
-      max-width: 26ch;
-      margin-left: auto;
-      text-align: right;
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--rule-soft);
-    }
-
-    /* ── HOW ── */
-    .how-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .how-card {
-      background: var(--panel);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-    }
-
-    .how-num {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 500;
-      font-size: 2.4rem;
-      color: var(--plum);
-      line-height: 1;
-      margin-bottom: 1.25rem;
-    }
-
-    .how-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: 1.55rem;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.85rem;
-      color: var(--ink);
-    }
-
-    .how-card p {
-      font-family: 'Epilogue', sans-serif;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: var(--gray);
-    }
-
-    /* ── PRACTICE ── */
-    .practice-card {
-      background: var(--panel);
-      border-radius: var(--radius-lg);
-      padding: clamp(2rem, 4vw, 3.5rem);
-      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-    }
-
-    .practice-body {
-      font-family: 'Playfair Display', serif;
-      font-weight: 400;
-      font-size: clamp(1.15rem, 1.6vw, 1.4rem);
-      line-height: 1.5;
-      color: var(--ink);
-      max-width: 56ch;
-      margin-bottom: 2rem;
-    }
-
-    .practice-kicker {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 500;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      line-height: 1.15;
-      letter-spacing: -0.015em;
-      color: var(--plum);
-      margin-bottom: 2.5rem;
-      max-width: 20ch;
-    }
-
-    .practice-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.5rem;
-      padding-top: 1.75rem;
-      border-top: 1px solid var(--rule-soft);
-      flex-wrap: wrap;
-    }
-
-    .practice-caption {
-      font-family: 'Epilogue', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--mid);
-    }
-
-    .practice-link {
-      font-family: 'Epilogue', sans-serif;
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-      color: var(--plum);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      border-bottom: 1.5px solid var(--plum);
-      padding-bottom: 2px;
     }
 
     /* ── ABOUT ── */
@@ -853,21 +667,15 @@
 
       .hero-grid,
       .about-grid,
-      .problem-card,
       .offer-card {
         grid-template-columns: 1fr;
         gap: 2.5rem;
       }
 
-      .problem-card, .offer-card { padding: 1.75rem; }
+      .offer-card { padding: 1.75rem; }
 
       .hero-badge { left: auto; right: -16px; bottom: -22px; padding: 1rem 1.25rem; max-width: 190px; }
       .hero-badge .num { font-size: 2rem; }
-
-      .who-grid { grid-template-columns: repeat(2, 1fr); }
-      .who-kicker { text-align: left; margin-left: 0; max-width: 100%; }
-
-      .how-grid { grid-template-columns: 1fr; }
 
       .audit-head { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
       .audit-card { padding: 1.75rem; }
@@ -876,13 +684,7 @@
       .audit-box { width: 24px; height: 24px; }
       .audit-box svg { width: 15px; height: 15px; }
 
-      .practice-meta { flex-direction: column; align-items: flex-start; }
-
       footer { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 1.75rem 0; }
-    }
-
-    @media (max-width: 480px) {
-      .who-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -911,7 +713,7 @@
             <span class="ring gold">B</span>
             <span class="ring ink">R</span>
           </div>
-          <p class="cred-text">Extract. Build. Run. One quarterly engagement that hands the routine work to your business — so your time goes back to what made you start.</p>
+          <p class="cred-text">For coaches, realtors, photographers, consultants, and childcare directors with thriving small businesses they love.</p>
         </div>
       </div>
 
@@ -932,24 +734,6 @@
     <p class="band-line">You built the expertise.<span class="accent">I build everything around it.</span></p>
   </div>
 </div>
-
-<!-- PROBLEM -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">The Problem</p>
-    <div class="problem-card">
-      <div>
-        <p class="pull">"Your business is not your life. It's something separate from you, with its own rules and its own purposes. An organism, you might say, that will live or die according to how well it performs its sole function: to find and keep customers."</p>
-        <p class="pull-attr">Michael E. Gerber · The E-Myth Revisited</p>
-      </div>
-      <div class="problem-body">
-        <p>You've probably heard this. Maybe even tried it.</p>
-        <p>You're still the one doing everything. Not because you don't care enough. Because his system isn't yours.</p>
-        <p class="problem-kicker">Systems will get you there. <span class="accent">Your</span> systems.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- AUDIT -->
 <div class="audit-wrap">
@@ -1035,8 +819,8 @@
     <div class="offer-card">
       <div>
         <h2>The <span class="accent">Foundation Build</span>.</h2>
+        <p class="steps-inline">Extract · Build · Run.</p>
         <p class="lede">I sit with you to understand how your work actually works. Then I build the tools and systems that let the routine work hold its own — so your time goes back to what made you start.</p>
-        <a href="mailto:klohr@foundationforward.com" class="pill">Discover the Foundation Build <span class="arrow">→</span></a>
       </div>
       <div>
         <ul class="checklist">
@@ -1062,67 +846,8 @@
             </div>
           </li>
         </ul>
+        <p class="offer-foot-italic">If someone else's system was going to work for you, it would have by now.</p>
         <p class="offer-foot">Not a template. The one that's actually yours.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHO -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">Who it's for</p>
-    <h2>Expert practitioners with thriving small businesses they love. The field varies. The shape of the problem <span class="accent">doesn't.</span></h2>
-    <p class="lede">Everything currently runs through you. The parts that drew you in get squeezed out.</p>
-
-    <div class="who-grid">
-      <div class="who-card"><span class="num">01</span><span class="name">Coaches</span></div>
-      <div class="who-card"><span class="num">02</span><span class="name">Realtors</span></div>
-      <div class="who-card"><span class="num">03</span><span class="name">Photographers</span></div>
-      <div class="who-card"><span class="num">04</span><span class="name">Consultants</span></div>
-      <div class="who-card"><span class="num">05</span><span class="name">Childcare Directors</span></div>
-    </div>
-
-    <p class="who-kicker">If someone else's system was going to work for you, it would have by now.</p>
-  </div>
-</section>
-
-<!-- HOW -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">How it works</p>
-    <h2>Three steps. One <span class="accent">quarter.</span></h2>
-
-    <div class="how-grid">
-      <div class="how-card">
-        <p class="how-num">01</p>
-        <h3>Extract.</h3>
-        <p>We sit together. I ask the right questions and get what's in your head, even when you can't quite articulate it yourself. You've already figured it out. I find it.</p>
-      </div>
-      <div class="how-card">
-        <p class="how-num">02</p>
-        <h3>Build.</h3>
-        <p>I build the artifact. A playbook. A sequence. A curriculum. A content system. Whatever your business needs to keep running. Built the way you actually work.</p>
-      </div>
-      <div class="how-card">
-        <p class="how-num">03</p>
-        <h3>Run.</h3>
-        <p>The routine work runs on its own. Your time goes back to what made you start.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRACTICE -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">In Practice</p>
-    <div class="practice-card">
-      <p class="practice-body">A business coach with years of methodology that had never been written down. We're building her curriculum systematically on Substack. Real, publishable content now. A course she can sell when it's ready.</p>
-      <p class="practice-kicker">One effort. Two products.</p>
-      <div class="practice-meta">
-        <p class="practice-caption">Current client · Foundation Forward Consulting</p>
-        <a href="foundation_forward_portfolio.html" class="practice-link">See the deeper portfolio <span class="arrow">→</span></a>
       </div>
     </div>
   </div>
