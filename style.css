@@ -1,13 +1,14 @@
 /* Foundation Forward — Kimberly Lohr
-   Editorial essay-site. Two faces (Fraunces, Newsreader), warm cream,
-   blue content accent, gold structural hairlines. No JS. */
+   Brand-kit aesthetic: navy blocks against warm cream, bold Archivo
+   headlines, elegant Playfair display + pull-quote, slate/periwinkle
+   accents. No JS. */
 
 :root {
-  --cream:  #F1ECE2;
-  --ink:    #1E1A16;
-  --muted:  #6B6359;
-  --blue:   #4D6A8A;
-  --gold:   #C9A84C; /* structural hairlines + small details */
+  --navy:   #232F45;
+  --slate:  #5E6E8C;
+  --periw:  #AEB7C9;
+  --cream:  #EFEAE0;
+  --cream-line: #DCD6C8; /* hairline on cream */
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -16,202 +17,265 @@ html { scroll-behavior: smooth; }
 
 body {
   background: var(--cream);
-  color: var(--ink);
-  font-family: 'Newsreader', Georgia, serif;
-  font-size: 20px;
-  line-height: 1.55;
+  color: var(--navy);
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-::selection { background: var(--blue); color: var(--cream); }
+::selection { background: var(--slate); color: var(--cream); }
 
-/* ── COLUMN: single, offset left of center ── */
-.column {
-  max-width: 36em;
-  margin-left: max(8vw, 4rem);
-  margin-right: auto;
-  padding: clamp(3.5rem, 8vw, 7rem) 1.5rem clamp(3rem, 6vw, 5rem);
+img { display: block; max-width: 100%; }
+
+/* ── PANELS (full-bleed color fields, constrained inner) ── */
+.panel { padding: clamp(3.25rem, 7vw, 6rem) 1.5rem; }
+.panel__inner { max-width: 940px; margin: 0 auto; }
+
+.panel--cream { background: var(--cream); color: var(--navy); }
+.panel--navy  { background: var(--navy);  color: var(--cream); }
+
+/* ── MASTHEAD ── */
+.masthead { background: var(--cream); padding: 1.75rem 1.5rem 1.25rem; border-bottom: 1px solid var(--cream-line); }
+.masthead__inner {
+  max-width: 940px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-/* ── HEADINGS ── */
-h1, h2 {
-  font-family: 'Fraunces', Georgia, serif;
-  font-optical-sizing: auto;
-  color: var(--ink);
-  font-weight: 500;
+.wordmark {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.01em;
+  color: var(--navy);
+  text-decoration: none;
 }
 
+.masthead__role {
+  font-family: 'Archivo', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+/* ── HEADINGS (bold sans, the kit's punch) ── */
 h2 {
-  font-size: clamp(1.7rem, 4vw, 2.125rem); /* ~34px */
-  line-height: 1.12;
-  letter-spacing: -0.01em;
-  font-variation-settings: 'SOFT' 40, 'opsz' 80;
-  margin-bottom: 1.25rem;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.4rem;
 }
 
-/* ── BODY TEXT ── */
+/* ── BODY ── */
 p {
-  font-size: 1.25rem; /* 20px */
-  line-height: 1.55;
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.6;
+  max-width: 40em;
   margin-bottom: 1.25rem;
 }
 p:last-child { margin-bottom: 0; }
 
+.lead { color: var(--slate); }
+.panel--navy .lead { color: var(--periw); }
+
 em { font-style: italic; }
-strong { font-weight: 500; }
+
+.emphatic {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.35;
+  color: var(--slate);
+  margin-top: 1.75rem;
+  max-width: 30ch;
+}
 
 /* ── LINKS ── */
 a {
-  color: var(--blue);
+  color: var(--slate);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   transition: text-decoration-thickness 0.18s ease;
 }
 a:hover, a:focus-visible { text-decoration-thickness: 2px; }
-
-/* ── SECTION RHYTHM + HAIRLINES ──
-   The rule owns all section spacing: 4rem above + 4rem below = an 8rem
-   gap between sections with the hairline centered. Blocks carry no own
-   top margin, so nothing stacks. */
-.rule {
-  border: 0;
-  border-top: 1px solid var(--gold);
-  margin: 4rem 0;
-}
+.panel--navy a { color: var(--periw); }
 
 /* ── 1 · HERO ── */
-.hero-line {
-  font-family: 'Fraunces', Georgia, serif;
-  font-optical-sizing: auto;
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.hero__line {
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 600;
-  font-size: clamp(2.5rem, 7vw, 4rem); /* 40 → 64px */
-  line-height: 1.05;
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
+  line-height: 1.06;
   letter-spacing: -0.02em;
-  font-variation-settings: 'SOFT' 50, 'opsz' 144;
+  color: var(--cream);
 }
 
-.hero-a { display: block; color: var(--ink); }
-
-.hero-b {
+.hero__pivot {
   display: block;
-  color: var(--blue);
+  margin-top: 0.4em;
   font-style: italic;
-  margin-top: 0.3em;
+  font-weight: 500;
+  color: var(--periw);
 }
 
-.hero-note {
+.hero__note {
+  font-family: 'Archivo', sans-serif;
   font-style: italic;
-  color: var(--muted);
-  font-size: 1rem;
-  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: var(--periw);
+  margin-top: 1.75rem;
+  max-width: none;
 }
 
-/* ── 2 · DIAGNOSTIC LIST ── */
+.hero__photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 18%;
+  border-radius: 6px;
+  border: 1px solid rgba(174,183,201,0.4);
+  filter: contrast(1.02) saturate(0.95);
+}
+
+/* ── 2 · DIAGNOSTIC ── */
 .diagnostic {
   list-style: none;
   counter-reset: dx;
-  margin-top: 2rem;
+  margin-top: 2.25rem;
 }
 
 .diagnostic li {
   counter-increment: dx;
-  position: relative;
-  padding: 1.15rem 0 1.15rem 3rem;
-  border-top: 1px solid var(--gold);
-  font-size: 1.25rem;
-  line-height: 1.5;
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  gap: 1.25rem;
+  align-items: baseline;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--cream-line);
 }
-.diagnostic li:last-child { border-bottom: 1px solid var(--gold); }
+.diagnostic li:last-child { border-bottom: 1px solid var(--cream-line); }
 
 .diagnostic li::before {
-  content: counter(dx);
-  position: absolute;
-  left: 0;
-  top: 1.15rem;
-  font-family: 'Fraunces', Georgia, serif;
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--muted);
-  line-height: 1.5;
+  content: counter(dx, decimal-leading-zero);
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  color: var(--slate);
+}
+
+.diagnostic__text {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.45;
 }
 
 /* ── 4 · EXAMPLES ── */
-.example { margin-top: 2rem; }
-.example:first-of-type { margin-top: 1.75rem; }
+.example { margin-top: 2.25rem; }
+.example:first-of-type { margin-top: 2rem; }
 
-.example-label {
-  font-style: italic;
-  color: var(--muted);
-  font-size: 1rem;
-  margin-bottom: 0.35rem;
-}
-
-/* ── 5 · PULL QUOTE ── */
-.pull {
-  font-family: 'Fraunces', Georgia, serif;
-  font-optical-sizing: auto;
+.example__label {
+  font-family: 'Playfair Display', Georgia, serif;
   font-style: italic;
   font-weight: 500;
-  font-size: clamp(1.6rem, 4.5vw, 2.4rem);
-  line-height: 1.22;
+  font-size: 1.25rem;
+  color: var(--slate);
+  margin-bottom: 0.4rem;
+}
+
+/* ── PULL QUOTE (navy band) ── */
+.quote-band { padding-top: clamp(3.5rem, 8vw, 6.5rem); padding-bottom: clamp(3.5rem, 8vw, 6.5rem); }
+
+.pull {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4.8vw, 3.1rem);
+  line-height: 1.18;
   letter-spacing: -0.015em;
-  color: var(--blue);
-  margin: 3rem 0 0.5rem;
-  max-width: 18ch;
-  font-variation-settings: 'SOFT' 50, 'opsz' 120;
+  color: var(--cream);
+  max-width: 20ch;
 }
 
 /* ── 7 · FIT ── */
-.fit { margin-bottom: 1.5rem; }
-.fit-label {
+.fit { margin-bottom: 1.5rem; max-width: 42em; }
+.fit__label {
+  font-family: 'Playfair Display', Georgia, serif;
   font-style: italic;
-  color: var(--muted);
+  font-weight: 500;
+  color: var(--slate);
 }
 
-/* ── 8 · CTA ── */
-.cta { margin-top: 2rem; }
-.cta a {
-  font-size: 1.25rem;
+/* ── 8 · CONVERSATION / CTA ── */
+.conversation .cta { margin-top: 2rem; }
+.conversation .cta a {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  color: var(--cream);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
   white-space: nowrap;
 }
+.conversation .cta a:hover { text-decoration-thickness: 2px; }
 
 /* ── 9 · FOOTER ── */
-.footer { margin-top: 4rem; }
-
-.headshot {
-  width: 200px;
-  height: auto;
-  display: block;
-  margin-bottom: 1.75rem;
-  filter: grayscale(0.6) sepia(0.15) contrast(1.02);
+.footer { padding-top: clamp(2.5rem, 5vw, 3.5rem); padding-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+.footer .panel__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
-
+.wordmark--footer { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.3rem; color: var(--cream); margin: 0; }
 .colophon {
-  font-size: 1rem;
-  color: var(--muted);
+  font-family: 'Archivo', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--periw);
+  margin: 0;
 }
 
 /* ── HERO FADE (the one animation) ── */
 @media (prefers-reduced-motion: no-preference) {
-  .hero { animation: heroIn 600ms ease-out both; }
+  .hero__text, .hero__photo-wrap { animation: heroIn 600ms ease-out both; }
+  .hero__photo-wrap { animation-delay: 120ms; }
   @keyframes heroIn {
-    from { opacity: 0; transform: translateY(6px); }
+    from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 }
 
 /* ── MOBILE ── */
-@media (max-width: 640px) {
-  body { font-size: 18px; }
-  .column {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 3rem 1.25rem 2.5rem;
-  }
-  p, .diagnostic li, .cta a { font-size: 1.125rem; } /* 18px */
-  .rule { margin: 2rem 0; } /* 4rem total section gap on mobile */
-  .diagnostic li { padding-left: 2.5rem; }
+@media (max-width: 720px) {
+  body { font-size: 17px; }
+
+  .hero__inner { grid-template-columns: 1fr; gap: 2rem; }
+  .hero__photo-wrap { order: -1; }
+  .hero__photo { max-width: 300px; }
+
+  .diagnostic li { grid-template-columns: 2.25rem 1fr; gap: 1rem; }
+
+  .footer .panel__inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
 }
