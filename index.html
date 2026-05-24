@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<!-- PRELOADER -->
+<!-- LOADER -->
 <div class="preloader" id="preloader" aria-hidden="true">
   <div class="preloader__inner">
     <span class="preloader__mark">Foundation Forward</span>
@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<!-- HEADER (sticky) -->
+<!-- HEADER -->
 <header class="site-header" id="siteHeader">
   <div class="container site-header__inner">
     <a class="wordmark" href="#top">Foundation Forward</a>
@@ -30,108 +30,169 @@
       <a href="#examples">What you get</a>
       <a href="#contact">Talk</a>
     </nav>
-    <a class="pill pill--solid" href="mailto:klohr@foundationforward.com">Let's talk <span class="arrow">→</span></a>
+    <a class="btn btn--solid" href="mailto:klohr@foundationforward.com">Let's talk</a>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- 1 · HERO -->
+  <!-- HERO -->
   <section class="hero">
-    <span class="hero__block" aria-hidden="true" data-parallax="0.05"></span>
-    <div class="container hero__inner">
-      <div class="hero__text">
-        <div class="tags">
-          <span class="tag">Business Architecture</span>
-          <span class="tag">For expert practitioners</span>
-        </div>
-        <h1 class="hero__line">
-          <span class="hero__l1 reveal" data-anim="up">Your business works because you're the one doing it.</span>
-          <span class="hero__pivot reveal" data-anim="up" data-delay="160">That's also the problem.</span>
-        </h1>
-        <p class="hero__meta reveal" data-anim="up" data-delay="320">A note from Kimberly Lohr&ensp;·&ensp;Business Architect</p>
+    <div class="container hero__grid">
+      <div class="hero__content">
+        <span class="eyebrow reveal" data-anim="up">A note from Kimberly Lohr</span>
+        <h1 class="hero__title reveal" data-anim="left" data-delay="80">Your business works because you're the one doing it. <em>That's also the problem.</em></h1>
+        <p class="hero__text reveal" data-anim="left" data-delay="180">I'm a Business Architect. I work with expert practitioners whose businesses run entirely through them — and build the one thing the business needs to keep running when they're not in the room.</p>
+        <ul class="hero__actions reveal" data-anim="up" data-delay="280">
+          <li><a class="btn btn--solid" href="mailto:klohr@foundationforward.com">Let's talk</a></li>
+          <li><a class="btn btn--ghost" href="#work">How it works</a></li>
+        </ul>
       </div>
       <div class="hero__media reveal" data-anim="right" data-delay="200">
+        <span class="hero__dots" aria-hidden="true" data-parallax="0.06"></span>
         <figure class="hero__figure">
           <img class="hero__photo" src="klohr_headshot.jpg" alt="Kimberly Lohr" />
+        </figure>
+        <div class="hero__badge">
+          <span class="hero__badge-top">One quarter.</span>
+          <span class="hero__badge-bottom">One finished thing.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGNOSTIC (services-6 grid) -->
+  <section class="section" id="diagnostic">
+    <div class="container">
+      <div class="section-title reveal" data-anim="up">
+        <span class="eyebrow">The diagnostic</span>
+        <h2>You might recognize this.</h2>
+        <p class="section-title__sub">If three or more of these are true, the rest of this page is for you.</p>
+      </div>
+      <div class="grid-6">
+        <article class="dx-card reveal" data-anim="up">
+          <span class="dx-card__num">01</span>
+          <p>Your business stalls when you take a week off.</p>
+        </article>
+        <article class="dx-card reveal" data-anim="up" data-delay="80">
+          <span class="dx-card__num">02</span>
+          <p>You've watched the top people in your field and tried to adapt how they work. It never quite fits.</p>
+        </article>
+        <article class="dx-card reveal" data-anim="up" data-delay="160">
+          <span class="dx-card__num">03</span>
+          <p>You have a methodology in your head that's never been written down.</p>
+        </article>
+        <article class="dx-card reveal" data-anim="up" data-delay="240">
+          <span class="dx-card__num">04</span>
+          <p>New hires can't replicate what you do, even when you explain it.</p>
+        </article>
+        <article class="dx-card reveal" data-anim="up" data-delay="320">
+          <span class="dx-card__num">05</span>
+          <p>You're trading time for money because there's no leveraged version of your work.</p>
+        </article>
+        <article class="dx-card reveal" data-anim="up" data-delay="400">
+          <span class="dx-card__num">06</span>
+          <p>You've outgrown the version of your business that runs on memory.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT (about-6) -->
+  <section class="section section--cream" id="work">
+    <div class="container about">
+      <div class="about__content reveal" data-anim="left">
+        <span class="eyebrow">The work</span>
+        <h2>Not a template. The one that's actually yours.</h2>
+        <p>I'm Kimberly. My background is instructional design — the discipline of getting what someone knows out of their head and into a form other people can use. I now apply that to small businesses.</p>
+        <p>I work with expert practitioners — coaches, realtors, photographers, childcare directors, consultants — whose businesses run on their expertise, and only on their expertise. We work together for a quarter. I sit with you, extract how your work actually works, and build the one thing your business needs to keep running when you're not in the room.</p>
+        <ul class="about__list">
+          <li>A playbook</li>
+          <li>A 10-week follow-up sequence</li>
+          <li>A curriculum</li>
+          <li>A content system</li>
+        </ul>
+        <a class="btn btn--solid" href="mailto:klohr@foundationforward.com">Let's talk</a>
+      </div>
+      <div class="about__media reveal" data-anim="right" data-delay="140">
+        <span class="about__dots" aria-hidden="true"></span>
+        <figure class="about__figure">
+          <img src="klohr_headshot.jpg" alt="Kimberly Lohr at work" />
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- 2 · COUNTER BAND -->
+  <!-- COUNTER BAND -->
   <section class="counters">
     <div class="container counters__inner">
       <div class="counter reveal" data-anim="up">
-        <span class="counter__num" data-count="12" data-suffix="">0</span>
+        <span class="counter__num" data-count="12">0</span>
         <span class="counter__label">Weeks to a finished foundation</span>
       </div>
       <div class="counter reveal" data-anim="up" data-delay="120">
-        <span class="counter__num" data-count="2" data-suffix="">0</span>
+        <span class="counter__num" data-count="2">0</span>
         <span class="counter__label">New clients per quarter</span>
       </div>
       <div class="counter reveal" data-anim="up" data-delay="240">
-        <span class="counter__num" data-count="1" data-suffix="">0</span>
-        <span class="counter__label">Quarter, start to finish</span>
+        <span class="counter__num" data-count="1">0</span>
+        <span class="counter__label">Finished thing you keep</span>
       </div>
     </div>
   </section>
 
-  <!-- 3 · DIAGNOSTIC -->
-  <section class="section" id="diagnostic">
+  <!-- WHY + PULL QUOTE -->
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="section-title section-title--left reveal" data-anim="up">
+        <span class="eyebrow">Why it's different</span>
+        <h2>Why I don't bring a framework.</h2>
+      </div>
+      <p class="reveal" data-anim="up" data-delay="80">Most small business owners looking for answers turn to others in their field — watching what the top people do, trying to adapt their systems. It rarely works, because your business is uniquely yours.</p>
+      <p class="reveal" data-anim="up" data-delay="140">I don't arrive with a framework and fit you to it. I extract what you already know and build it into something that runs the way you actually work.</p>
+    </div>
+  </section>
+
+  <section class="quote-band">
+    <span class="quote-shape quote-shape--1" aria-hidden="true" data-parallax="0.05"></span>
+    <span class="quote-shape quote-shape--2" aria-hidden="true" data-parallax="0.08"></span>
     <div class="container">
-      <h2 class="reveal" data-anim="up">You might recognize this.</h2>
-      <p class="lead reveal" data-anim="up" data-delay="80">If three or more of these are true, the rest of this page is for you.</p>
-      <ol class="diagnostic card">
-        <li class="reveal" data-anim="up"><span class="diagnostic__text">Your business stalls when you take a week off.</span></li>
-        <li class="reveal" data-anim="up" data-delay="70"><span class="diagnostic__text">You've watched the top people in your field and tried to adapt how they work. It never quite fits.</span></li>
-        <li class="reveal" data-anim="up" data-delay="140"><span class="diagnostic__text">You have a methodology in your head that's never been written down.</span></li>
-        <li class="reveal" data-anim="up" data-delay="210"><span class="diagnostic__text">New hires can't replicate what you do, even when you explain it.</span></li>
-        <li class="reveal" data-anim="up" data-delay="280"><span class="diagnostic__text">You're trading time for money because there's no leveraged version of your work.</span></li>
-        <li class="reveal" data-anim="up" data-delay="350"><span class="diagnostic__text">You've outgrown the version of your business that runs on memory.</span></li>
-      </ol>
+      <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+      <blockquote class="pull reveal" data-anim="up">If someone else's system was going to work for you, it would have by now.</blockquote>
     </div>
   </section>
 
-  <!-- 4 · THE WORK (about) -->
-  <section class="section section--alt" id="work">
-    <div class="container about">
-      <div class="about__head reveal" data-anim="left">
-        <h2>The work.</h2>
-        <p class="emphatic">Not a template. Not someone else's framework. The one that's actually yours.</p>
-      </div>
-      <div class="about__body reveal" data-anim="right" data-delay="120">
-        <p>I'm Kimberly. My background is instructional design — the discipline of getting what someone knows out of their head and into a form other people can use. I now apply that to small businesses.</p>
-        <p>I work with expert practitioners — coaches, realtors, photographers, childcare directors, consultants — whose businesses run on their expertise, and only on their expertise. We work together for a quarter. I sit with you, extract how your work actually works, and build the one thing your business needs to keep running when you're not in the room.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5 · EXAMPLES (slider) -->
-  <section class="section" id="examples">
+  <!-- EXAMPLES (testimonial-6 slider) -->
+  <section class="section section--cream" id="examples">
     <div class="container">
-      <h2 class="reveal" data-anim="up">One finished thing, in a quarter.</h2>
-      <p class="lead reveal" data-anim="up" data-delay="80">What we build depends on where your business needs the leverage. Three examples of what a quarter has looked like:</p>
+      <div class="section-title reveal" data-anim="up">
+        <span class="eyebrow">In practice</span>
+        <h2>One finished thing, in a quarter.</h2>
+        <p class="section-title__sub">What we build depends on where your business needs the leverage. Three examples of what a quarter has looked like.</p>
+      </div>
 
-      <div class="slider reveal" data-anim="up" data-delay="160">
+      <div class="slider reveal" data-anim="up" data-delay="120">
         <div class="slider__viewport">
           <ul class="slider__track" id="examplesTrack">
             <li class="slide">
-              <article class="example card">
-                <p class="example__label">For a coach.</p>
+              <article class="tcard">
+                <span class="tcard__mark" aria-hidden="true">&ldquo;</span>
                 <p>Twelve years of methodology, extracted from how she actually teaches and structured into a curriculum she can publish as written content now and assemble into a paid course later. One effort, two products.</p>
+                <p class="tcard__label">For a coach.</p>
               </article>
             </li>
             <li class="slide">
-              <article class="example card">
-                <p class="example__label">For a realtor.</p>
+              <article class="tcard">
+                <span class="tcard__mark" aria-hidden="true">&ldquo;</span>
                 <p>The ten-week post-sale follow-up sequence she'd been hand-cranking from memory, built into a sequence she runs without thinking. Same warmth, none of the cognitive load.</p>
+                <p class="tcard__label">For a realtor.</p>
               </article>
             </li>
             <li class="slide">
-              <article class="example card">
-                <p class="example__label">For a studio owner.</p>
+              <article class="tcard">
+                <span class="tcard__mark" aria-hidden="true">&ldquo;</span>
                 <p>A content system that turns the work she's already doing — sessions, client conversations, behind-the-scenes — into a steady publication rhythm that runs without becoming a second job.</p>
+                <p class="tcard__label">For a studio owner.</p>
               </article>
             </li>
           </ul>
@@ -145,47 +206,48 @@
     </div>
   </section>
 
-  <!-- 6 · PULL QUOTE -->
-  <section class="quote-band">
-    <div class="container">
-      <span class="quote-rule reveal" data-anim="rule" aria-hidden="true"></span>
-      <blockquote class="pull reveal" data-anim="up" data-delay="120">If someone else's system was going to work for you, it would have by now.</blockquote>
-    </div>
-  </section>
-
-  <!-- 7 · THE ENGAGEMENT -->
+  <!-- ENGAGEMENT -->
   <section class="section">
     <div class="container container--narrow">
-      <h2 class="reveal" data-anim="up">The engagement.</h2>
+      <div class="section-title section-title--left reveal" data-anim="up">
+        <span class="eyebrow">How we work</span>
+        <h2>The engagement.</h2>
+      </div>
       <p class="reveal" data-anim="up" data-delay="80">One quarter. We start with a scoping conversation, then move into weekly working sessions where I extract and you refine. By the end of the quarter, you walk away with one finished, working thing — built, not just planned.</p>
       <p class="reveal" data-anim="up" data-delay="140">Quarterly engagement, invoiced at the start. A one-page scope of work before we begin. Plain pricing, sent in advance of any decision.</p>
     </div>
   </section>
 
-  <!-- 8 · A GOOD FIT -->
-  <section class="section section--alt">
+  <!-- GOOD FIT -->
+  <section class="section section--cream">
     <div class="container">
-      <h2 class="reveal" data-anim="up">A good fit.</h2>
+      <div class="section-title reveal" data-anim="up">
+        <span class="eyebrow">Fit</span>
+        <h2>A good fit.</h2>
+      </div>
       <div class="fit-grid">
-        <div class="fit card reveal" data-anim="up" data-delay="80">
-          <p class="fit__label">This works well for</p>
+        <div class="fit-card reveal" data-anim="up" data-delay="80">
+          <p class="fit-card__label">This works well for</p>
           <p>Experts whose businesses are real, working, and bottlenecked at their own time. People who know their craft cold and are ready to build the system underneath it.</p>
         </div>
-        <div class="fit card reveal" data-anim="up" data-delay="180">
-          <p class="fit__label">This isn't the right fit for</p>
+        <div class="fit-card reveal" data-anim="up" data-delay="180">
+          <p class="fit-card__label">This isn't the right fit for</p>
           <p>Startups still figuring out what they're building. People looking for a VA to execute tasks they've already mapped. People making decisions from cold ads or cold outreach.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 9 · THE CONVERSATION -->
-  <section class="section conversation" id="contact">
-    <div class="container container--narrow">
-      <h2 class="reveal" data-anim="up">A first conversation.</h2>
-      <p class="reveal" data-anim="up" data-delay="80">Thirty minutes. No pitch, no slides. We'll spend it on where your business actually bottlenecks. If we're a fit, we'll talk about next steps. If we're not, you'll still walk away with a clearer read on where you're stuck.</p>
-      <p class="reveal" data-anim="up" data-delay="140">I'm currently accepting up to two new clients for the coming quarter.</p>
-      <p class="cta reveal" data-anim="up" data-delay="200"><a class="pill pill--solid pill--lg" href="mailto:klohr@foundationforward.com">klohr@foundationforward.com <span class="arrow">→</span></a></p>
+  <!-- CTA (subscribe-area repurposed) -->
+  <section class="cta-band" id="contact">
+    <div class="container cta-band__inner">
+      <div class="cta-band__text reveal" data-anim="left">
+        <h2>A first conversation.</h2>
+        <p>Thirty minutes. No pitch, no slides. We'll spend it on where your business actually bottlenecks. If we're a fit, we'll talk about next steps. If we're not, you'll still walk away with a clearer read on where you're stuck. I'm currently accepting up to two new clients for the coming quarter.</p>
+      </div>
+      <div class="cta-band__action reveal" data-anim="right" data-delay="120">
+        <a class="btn btn--solid btn--lg" href="mailto:klohr@foundationforward.com">klohr@foundationforward.com</a>
+      </div>
     </div>
   </section>
 
@@ -206,21 +268,21 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var doc = document;
 
-  /* ---- PRELOADER ---- */
+  /* PRELOADER */
   var preloader = doc.getElementById('preloader');
   function hidePreloader() { if (preloader) preloader.classList.add('is-done'); }
   window.addEventListener('load', hidePreloader);
-  setTimeout(hidePreloader, 1800); /* safety */
+  setTimeout(hidePreloader, 1800);
 
-  /* ---- STICKY HEADER + BACK TO TOP ---- */
+  /* STICKY HEADER + BACK TO TOP + PARALLAX */
   var header = doc.getElementById('siteHeader');
   var toTop = doc.getElementById('backToTop');
+  var shapes = doc.querySelectorAll('[data-parallax]');
   function onScroll() {
     var y = window.pageYOffset;
     if (header) header.classList.toggle('is-stuck', y > 40);
     if (toTop) toTop.classList.toggle('is-shown', y > 600);
     if (!reduce) {
-      var shapes = doc.querySelectorAll('[data-parallax]');
       for (var i = 0; i < shapes.length; i++) {
         var r = parseFloat(shapes[i].getAttribute('data-parallax')) || 0;
         shapes[i].style.transform = 'translate3d(0,' + (y * r * -1) + 'px,0)';
@@ -237,7 +299,7 @@
     window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   });
 
-  /* ---- SCROLL REVEALS ---- */
+  /* SCROLL REVEALS */
   var reveals = doc.querySelectorAll('.reveal');
   if (reduce || !('IntersectionObserver' in window)) {
     reveals.forEach(function (el) { el.classList.add('is-visible'); });
@@ -250,24 +312,21 @@
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('is-visible'); ro.unobserve(e.target); }
       });
-    }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
     reveals.forEach(function (el) { ro.observe(el); });
   }
 
-  /* ---- COUNTERS ---- */
+  /* COUNTERS */
   var counters = doc.querySelectorAll('.counter__num');
   function runCount(el) {
     var target = parseFloat(el.getAttribute('data-count')) || 0;
-    var suffix = el.getAttribute('data-suffix') || '';
-    if (reduce) { el.textContent = target + suffix; return; }
+    if (reduce) { el.textContent = target; return; }
     var dur = 1100, start = null;
     function step(ts) {
       if (start === null) start = ts;
       var p = Math.min((ts - start) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased) + suffix;
-      if (p < 1) requestAnimationFrame(step);
-      else el.textContent = target + suffix;
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step); else el.textContent = target;
     }
     requestAnimationFrame(step);
   }
@@ -284,7 +343,7 @@
     }
   }
 
-  /* ---- EXAMPLES SLIDER ---- */
+  /* EXAMPLES SLIDER */
   var track = doc.getElementById('examplesTrack');
   if (track) {
     var slides = Array.prototype.slice.call(track.children);
@@ -292,58 +351,37 @@
     var next = doc.getElementById('slideNext');
     var dotsWrap = doc.getElementById('slideDots');
     var index = 0, timer = null, AUTO = 6000;
-
     var dots = slides.map(function (_, i) {
       var b = doc.createElement('button');
-      b.type = 'button';
-      b.className = 'slider__dot';
-      b.setAttribute('role', 'tab');
-      b.setAttribute('aria-label', 'Example ' + (i + 1));
+      b.type = 'button'; b.className = 'slider__dot';
+      b.setAttribute('role', 'tab'); b.setAttribute('aria-label', 'Example ' + (i + 1));
       b.addEventListener('click', function () { go(i, true); });
-      dotsWrap.appendChild(b);
-      return b;
+      dotsWrap.appendChild(b); return b;
     });
-
     function render() {
       track.style.transform = 'translateX(' + (-index * 100) + '%)';
-      slides.forEach(function (s, i) { s.classList.toggle('is-active', i === index); });
       dots.forEach(function (d, i) {
         d.classList.toggle('is-active', i === index);
         d.setAttribute('aria-selected', i === index ? 'true' : 'false');
       });
     }
-    function go(i, user) {
-      index = (i + slides.length) % slides.length;
-      render();
-      if (user) restart();
-    }
-    function nextSlide() { go(index + 1); }
-    function start() { if (!reduce) timer = setInterval(nextSlide, AUTO); }
+    function go(i, user) { index = (i + slides.length) % slides.length; render(); if (user) restart(); }
+    function start() { if (!reduce) timer = setInterval(function () { go(index + 1); }, AUTO); }
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
     function restart() { stop(); start(); }
-
     if (prev) prev.addEventListener('click', function () { go(index - 1, true); });
     if (next) next.addEventListener('click', function () { go(index + 1, true); });
-
     var sliderEl = track.closest('.slider');
-    if (sliderEl) {
-      sliderEl.addEventListener('mouseenter', stop);
-      sliderEl.addEventListener('mouseleave', start);
-    }
-
-    /* touch / pointer swipe */
+    if (sliderEl) { sliderEl.addEventListener('mouseenter', stop); sliderEl.addEventListener('mouseleave', start); }
     var x0 = null;
     track.addEventListener('pointerdown', function (e) { x0 = e.clientX; stop(); });
     track.addEventListener('pointerup', function (e) {
       if (x0 === null) return;
       var dx = e.clientX - x0;
-      if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1), true);
-      else start();
+      if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1), true); else start();
       x0 = null;
     });
-
-    render();
-    start();
+    render(); start();
   }
 })();
 </script>
