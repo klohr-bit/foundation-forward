@@ -1,19 +1,20 @@
 /* Foundation Forward — Kimberly Lohr
-   Bold "color-field" art direction: aubergine owns the page, statements
-   reversed out in cream, gold as the jewelry. Playfair Display + Space
-   Grotesk. Lean component set. Functions: preloader, sticky header, scroll
-   reveals, counters, slider, back-to-top. Reduced-motion aware. */
+   Bold "color-field" art direction: deep luxury navy owns the page,
+   statements reversed out in ivory, gold as the jewelry. Playfair Display +
+   Space Grotesk. Lean component set. Functions: preloader, sticky header,
+   scroll reveals, counters, slider, back-to-top. Reduced-motion aware.
+   (Token names --plum/--cream/--mauve retained; values are now navy/ivory.) */
 
 :root {
-  --plum:      #3C2247;
-  --plum-deep: #2A1832;
-  --cream:     #F1EADE;
+  --plum:      #1E2B4D;
+  --plum-deep: #16213D;
+  --cream:     #F3F0E8;
   --gold:      #C9A24A;
   --gold-soft: #DABE7C;
-  --ink:       #2A2230;
-  --mauve:     #B49AB0;
-  --line-cream: rgba(42,34,48,0.12);
-  --line-plum:  rgba(241,234,222,0.20);
+  --ink:       #1E2236;
+  --mauve:     #9AA6C2;
+  --line-cream: rgba(30,34,54,0.12);
+  --line-plum:  rgba(243,240,232,0.20);
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --maxw: 1140px;
 }
@@ -82,7 +83,7 @@ em { font-style: italic; }
 .hero__media { position: relative; }
 .portrait { position: relative; margin: 0; border-radius: 14px; overflow: hidden; }
 .portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 16%; filter: saturate(0.85) contrast(1.03) brightness(0.98); transition: transform 0.7s var(--ease); }
-.portrait::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(60,34,71,0) 45%, rgba(60,34,71,0.28) 100%); pointer-events: none; }
+.portrait::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,43,77,0) 45%, rgba(30,43,77,0.30) 100%); border: 1px solid rgba(201,162,74,0.45); border-radius: 14px; pointer-events: none; }
 .portrait:hover img { transform: scale(1.035); }
 .hero__media .portrait { border: 1px solid var(--line-plum); box-shadow: -18px 18px 0 0 var(--gold); }
 
