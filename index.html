@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kimberly Lohr · Business Architect</title>
-  <meta name="description" content="You started this for a reason. The Foundation Build turns the way you already work into a system your team can run — so your time goes back to the work that drew you in." />
+  <meta name="description" content="Hi, I'm Kimberly Lohr. I work with people who've already built a business and are ready to go back to the foundation: getting the systems right, or building a new revenue stream on the ground they've already got." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Epilogue:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -13,7 +13,6 @@
       --ink:        #1a1a1a;
       --paper:      #f6f1e7;
       --paper-2:    #ece5d4;
-      --panel:      #ffffff;
       --gray:       #5b574e;
       --mid:        #8e8676;
       --plum:       #6b3a72;
@@ -21,13 +20,9 @@
       --plum-soft:  #d8c5dd;
       --rule:       #1a1a1a;
       --rule-soft:  #d4cdb9;
-      --radius-lg:  28px;
-      --radius-md:  18px;
-      --radius-sm:  10px;
       --blob-1:     180px 60px 180px 60px;
-      --blob-2:     60px 180px 60px 180px;
       --gutter:     clamp(1.25rem, 3.5vw, 3rem);
-      --maxw:       1180px;
+      --maxw:       1000px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,7 +33,7 @@
       color: var(--ink);
       font-family: 'Epilogue', system-ui, sans-serif;
       font-size: 17px;
-      line-height: 1.65;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
@@ -52,19 +47,6 @@
       max-width: var(--maxw);
       margin: 0 auto;
       padding: 0 var(--gutter);
-    }
-
-    /* ── HEADLINES / DISPLAY ── */
-    .display, h1, h2, h3 {
-      font-family: 'Playfair Display', Georgia, serif;
-      color: var(--ink);
-    }
-
-    /* the italic plum emphasis word — the brand "tell" */
-    .accent {
-      font-style: italic;
-      font-weight: 500;
-      color: var(--plum);
     }
 
     /* ── PILL CTA ── */
@@ -87,24 +69,11 @@
     .pill:hover { background: var(--plum-deep); color: var(--paper); }
     .pill:active { transform: translateY(1px); }
 
-    .pill-ghost {
-      background: transparent;
-      color: var(--ink);
-      border: 1.5px solid var(--ink);
-      box-shadow: none;
-    }
-    .pill-ghost:hover { background: var(--ink); color: var(--paper); }
-
-    .arrow {
-      display: inline-block;
-      transition: transform 0.2s ease;
-    }
+    .arrow { display: inline-block; transition: transform 0.2s ease; }
     .pill:hover .arrow { transform: translateX(3px); }
 
-    /* ── NAV ── */
-    nav {
-      padding: 1.25rem 0;
-    }
+    /* ── NAV / MASTHEAD ── */
+    nav { padding: 1.25rem 0; }
 
     nav .wrap {
       display: flex;
@@ -145,86 +114,38 @@
 
     .nav-cta { padding: 0.75rem 1.4rem; font-size: 0.78rem; }
 
-    /* ── HERO ── */
-    .hero { padding: 3.5rem 0 5.5rem; }
+    /* ── LETTER ── */
+    .letter { padding: clamp(3rem, 6vw, 5.5rem) 0 clamp(4rem, 8vw, 7rem); }
 
-    .hero-grid {
+    .letter-top {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: clamp(2rem, 5vw, 5rem);
+      grid-template-columns: 1fr 360px;
+      gap: clamp(2rem, 5vw, 4.5rem);
       align-items: center;
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
     }
 
-    .hero h1 {
+    .letter-hi {
       font-family: 'Playfair Display', serif;
       font-weight: 600;
-      font-size: clamp(2.4rem, 5.4vw, 4.6rem);
-      line-height: 1.06;
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      line-height: 1.02;
       letter-spacing: -0.02em;
       color: var(--ink);
-      margin-bottom: 1.75rem;
-      max-width: 22ch;
+      margin-bottom: 1.5rem;
     }
+    .letter-hi .accent { font-style: italic; font-weight: 500; color: var(--plum); }
 
-    .hero h1 br { display: block; content: ''; }
-
-    .hero-deck {
-      font-family: 'Epilogue', sans-serif;
-      font-size: clamp(1rem, 1.2vw, 1.1rem);
-      line-height: 1.65;
-      color: var(--gray);
-      max-width: 44ch;
-      margin-bottom: 2.25rem;
-    }
-
-    .hero-credibility {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 2rem;
-      padding-top: 1.75rem;
-      border-top: 1px solid var(--rule-soft);
-      max-width: 32rem;
-    }
-
-    .cred-stack {
-      display: flex;
-      align-items: center;
-    }
-
-    .cred-stack .ring {
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      border: 2px solid var(--paper);
-      margin-left: -10px;
-      background: var(--paper-2);
-      display: grid;
-      place-items: center;
+    .letter-lead {
       font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 600;
-      font-size: 0.85rem;
+      font-weight: 400;
+      font-size: clamp(1.3rem, 2.1vw, 1.7rem);
+      line-height: 1.4;
       color: var(--ink);
-    }
-    .cred-stack .ring:first-child { margin-left: 0; }
-    .cred-stack .ring.green { background: var(--plum); color: var(--paper); border-color: var(--paper); }
-    .cred-stack .ring.gold  { background: var(--plum-soft); color: var(--plum-deep); border-color: var(--paper); }
-    .cred-stack .ring.ink   { background: var(--ink); color: var(--paper); border-color: var(--paper); }
-
-    .cred-text {
-      font-family: 'Epilogue', sans-serif;
-      font-size: 0.85rem;
-      color: var(--gray);
-      line-height: 1.45;
-      max-width: 28ch;
+      max-width: 26ch;
     }
 
-    .hero-photo-wrap {
-      position: relative;
-    }
-
-    .hero-photo {
+    .letter-photo {
       width: 100%;
       aspect-ratio: 4 / 5;
       object-fit: cover;
@@ -233,403 +154,39 @@
       filter: saturate(1.04) contrast(1.02);
     }
 
-    .hero-badge {
-      position: absolute;
-      bottom: 8%;
-      left: -22px;
-      background: var(--plum);
-      color: var(--paper);
-      padding: 1.25rem 1.5rem;
-      border-radius: 999px 18px 999px 18px;
-      max-width: 220px;
-      box-shadow: 0 12px 28px rgba(74,39,80,0.18);
-    }
+    .letter-body { max-width: 60ch; }
 
-    .hero-badge .num {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 2.4rem;
-      line-height: 1;
-      letter-spacing: -0.02em;
-      display: block;
-      margin-bottom: 0.35rem;
-    }
-
-    .hero-badge .label {
+    .letter-body p {
       font-family: 'Epilogue', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      line-height: 1.4;
+      font-size: clamp(1.05rem, 1.3vw, 1.18rem);
+      line-height: 1.75;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
     }
 
-    /* ── BAND ── */
-    .band {
-      padding: clamp(4rem, 8vw, 6.5rem) 0;
+    .letter-emphasis {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      max-width: 24ch;
+      margin: clamp(2.5rem, 5vw, 3.5rem) 0;
+      padding: clamp(2rem, 4vw, 2.75rem) 0;
       border-top: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
-      background: var(--paper-2);
     }
 
-    .band-line {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.85rem, 4vw, 3.25rem);
-      line-height: 1.18;
-      letter-spacing: -0.015em;
+    .letter-close {
+      font-family: 'Epilogue', sans-serif;
+      font-size: clamp(1.1rem, 1.4vw, 1.25rem);
+      line-height: 1.6;
       color: var(--ink);
-      max-width: 28ch;
+      max-width: 44ch;
+      margin-bottom: 2.25rem;
     }
-
-    .band-line .accent { font-style: italic; font-weight: 500; color: var(--plum); display: block; }
-
-    /* ── SECTION ── */
-    section { padding: clamp(4rem, 7vw, 6rem) 0; }
-
-    .eyebrow {
-      font-family: 'Epilogue', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--plum);
-      margin-bottom: 1.5rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .eyebrow::before {
-      content: '';
-      width: 14px;
-      height: 1.5px;
-      background: var(--plum);
-      display: block;
-    }
-
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: clamp(2rem, 4vw, 3.25rem);
-      line-height: 1.08;
-      letter-spacing: -0.018em;
-      max-width: 22ch;
-      margin-bottom: 1.5rem;
-    }
-
-    h2 .accent { color: var(--plum); }
-
-    .lede {
-      font-family: 'Epilogue', sans-serif;
-      font-size: clamp(1rem, 1.25vw, 1.15rem);
-      line-height: 1.65;
-      color: var(--gray);
-      max-width: 52ch;
-      margin-bottom: 2.5rem;
-    }
-
-    /* ── AUDIT ── */
-    .audit-wrap { padding: clamp(4rem, 7vw, 6rem) 0; }
-
-    .audit-card {
-      background: var(--panel);
-      border-radius: var(--radius-lg);
-      padding: clamp(2rem, 4vw, 3.5rem);
-      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-    }
-
-    .audit-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1.5rem;
-      margin-bottom: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .audit-h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: clamp(1.85rem, 3.5vw, 2.75rem);
-      line-height: 1.08;
-      letter-spacing: -0.015em;
-      color: var(--ink);
-      max-width: 20ch;
-      margin: 0;
-    }
-    .audit-h2 .accent { color: var(--plum); }
-
-    .audit-counter {
-      font-family: 'Epilogue', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--mid);
-      white-space: nowrap;
-      font-variant-numeric: tabular-nums;
-    }
-    .audit-counter strong { font-weight: 700; color: var(--ink); }
-
-    .audit-sub {
-      font-family: 'Epilogue', sans-serif;
-      font-size: 1rem;
-      color: var(--gray);
-      margin-bottom: 2.5rem;
-      max-width: 50ch;
-    }
-
-    .audit-list { list-style: none; border-top: 1px solid var(--rule-soft); }
-
-    .audit-item {
-      display: grid;
-      grid-template-columns: 36px 1fr;
-      gap: 1.25rem;
-      align-items: start;
-      padding: 1.4rem 0;
-      border-bottom: 1px solid var(--rule-soft);
-      cursor: pointer;
-      transition: padding-left 0.2s ease;
-    }
-
-    .audit-item:hover { padding-left: 0.5rem; }
-    .audit-item:focus-visible { outline: 2px solid var(--plum); outline-offset: 6px; border-radius: 4px; }
-
-    .audit-box {
-      width: 28px;
-      height: 28px;
-      margin-top: 2px;
-      border: 1.5px solid var(--ink);
-      border-radius: 8px;
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.18s ease, border-color 0.18s ease;
-    }
-
-    .audit-box svg {
-      width: 18px;
-      height: 18px;
-      opacity: 0;
-      transform: scale(0.7);
-      transition: opacity 0.18s ease, transform 0.18s ease;
-    }
-
-    .audit-item.checked .audit-box {
-      background: var(--plum);
-      border-color: var(--plum);
-    }
-    .audit-item.checked .audit-box svg { opacity: 1; transform: scale(1); }
-
-    .audit-text strong {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
-      line-height: 1.3;
-      letter-spacing: -0.005em;
-      color: var(--ink);
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-
-    .audit-text span {
-      font-family: 'Epilogue', sans-serif;
-      font-size: 0.95rem;
-      color: var(--gray);
-      line-height: 1.55;
-    }
-
-    .audit-item.checked .audit-text strong {
-      text-decoration: line-through;
-      text-decoration-thickness: 1.5px;
-      color: var(--gray);
-    }
-
-    .audit-summary {
-      margin-top: 2.5rem;
-      padding: 2rem;
-      background: var(--paper-2);
-      border-radius: var(--radius-md);
-      opacity: 0;
-      transform: translateY(6px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    .audit-summary.show { opacity: 1; transform: translateY(0); }
-
-    .audit-summary p {
-      font-family: 'Playfair Display', serif;
-      font-weight: 500;
-      font-style: italic;
-      font-size: clamp(1.15rem, 1.7vw, 1.45rem);
-      line-height: 1.35;
-      color: var(--ink);
-      margin-bottom: 1.25rem;
-      max-width: 38ch;
-    }
-
-    /* ── OFFER ── */
-    .offer-card {
-      background: var(--panel);
-      border-radius: var(--radius-lg);
-      padding: clamp(2.25rem, 4vw, 3.75rem);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(2rem, 4vw, 4rem);
-      align-items: start;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-    }
-
-    .checklist {
-      list-style: none;
-      margin-top: 0.5rem;
-    }
-
-    .checklist li {
-      display: grid;
-      grid-template-columns: 28px 1fr;
-      gap: 0.85rem;
-      align-items: start;
-      padding: 1.1rem 0;
-      border-bottom: 1px solid var(--rule-soft);
-    }
-    .checklist li:last-child { border-bottom: 0; }
-
-    .checklist .tick {
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      background: var(--plum);
-      display: grid;
-      place-items: center;
-      margin-top: 3px;
-    }
-
-    .checklist .tick svg { width: 13px; height: 13px; }
-
-    .checklist strong {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: 1.15rem;
-      line-height: 1.25;
-      letter-spacing: -0.005em;
-      color: var(--ink);
-      display: block;
-      margin-bottom: 0.2rem;
-    }
-
-    .checklist span {
-      font-family: 'Epilogue', sans-serif;
-      font-size: 0.95rem;
-      color: var(--gray);
-      line-height: 1.55;
-    }
-
-    .steps-inline {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 500;
-      font-size: 1rem;
-      letter-spacing: 0.02em;
-      color: var(--plum);
-      margin-top: -0.5rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .offer-foot-italic {
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--rule-soft);
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 1.1rem;
-      line-height: 1.4;
-      color: var(--gray);
-      max-width: 36ch;
-      margin-bottom: 0.85rem;
-    }
-
-    .offer-foot {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: 1.35rem;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-    }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: clamp(2rem, 5vw, 5rem);
-      align-items: center;
-    }
-
-    .about-photo {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      object-position: center 22%;
-      border-radius: var(--blob-2);
-      filter: saturate(1.0) contrast(1.02);
-    }
-
-    .about h2 { margin-bottom: 0.5rem; }
-    .about h2 .accent { color: var(--plum); font-weight: 500; }
-
-    .about-role {
-      font-family: 'Epilogue', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--plum);
-      margin-bottom: 2rem;
-    }
-
-    .about-body p {
-      font-family: 'Epilogue', sans-serif;
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--gray);
-      margin-bottom: 1.1rem;
-    }
-    .about-body p:last-child { margin-bottom: 0; color: var(--ink); }
-    .about-body em {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      color: var(--plum);
-      font-size: 1.1rem;
-    }
-
-    /* ── CLOSING ── */
-    .closing {
-      padding: clamp(5rem, 9vw, 7.5rem) 0 clamp(3rem, 6vw, 5rem);
-      text-align: center;
-    }
-
-    .closing h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      line-height: 1.02;
-      letter-spacing: -0.025em;
-      margin: 0 auto 1.5rem;
-      max-width: 18ch;
-    }
-
-    .closing h2 .accent { color: var(--plum); font-weight: 500; }
-
-    .closing p {
-      font-family: 'Epilogue', sans-serif;
-      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
-      color: var(--gray);
-      margin: 0 auto 2.5rem;
-      max-width: 38ch;
-    }
-
-    .closing .pill { padding: 1.1rem 2.25rem; font-size: 0.9rem; }
 
     /* ── FOOTER ── */
     footer {
@@ -662,27 +219,14 @@
     footer a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 880px) {
-      .hero { padding: 2rem 0 4rem; }
-
-      .hero-grid,
-      .about-grid,
-      .offer-card {
+    @media (max-width: 760px) {
+      .letter-top {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 2rem;
       }
-
-      .offer-card { padding: 1.75rem; }
-
-      .hero-badge { left: auto; right: -16px; bottom: -22px; padding: 1rem 1.25rem; max-width: 190px; }
-      .hero-badge .num { font-size: 2rem; }
-
-      .audit-head { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
-      .audit-card { padding: 1.75rem; }
-      .audit-item { grid-template-columns: 32px 1fr; gap: 1rem; padding: 1.15rem 0; }
-      .audit-item:hover { padding-left: 0; }
-      .audit-box { width: 24px; height: 24px; }
-      .audit-box svg { width: 15px; height: 15px; }
+      /* photo above the greeting on mobile */
+      .letter-photo { order: -1; max-width: 300px; }
+      .letter-lead { max-width: 100%; }
 
       footer { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 1.75rem 0; }
     }
@@ -690,7 +234,7 @@
 </head>
 <body>
 
-<!-- NAV -->
+<!-- NAV / MASTHEAD -->
 <nav>
   <div class="wrap">
     <a href="#top" class="logo"><span class="mark" aria-hidden="true"></span>Foundation<span class="italic"> Forward</span></a>
@@ -698,185 +242,31 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="top">
+<!-- LETTER -->
+<section class="letter" id="top">
   <div class="wrap">
-    <div class="hero-grid">
+    <div class="letter-top">
       <div>
-        <h1>You started this for <span class="accent">a reason</span>.<br>Let's get you back to it.</h1>
-        <p class="hero-deck">You built something real. But the parts that drew you in keep getting squeezed out by the parts that don't need you. Let's untangle that.</p>
-        <a href="mailto:klohr@foundationforward.com" class="pill">Start the conversation <span class="arrow">→</span></a>
-
-        <div class="hero-credibility">
-          <div class="cred-stack" aria-hidden="true">
-            <span class="ring green">E</span>
-            <span class="ring gold">B</span>
-            <span class="ring ink">R</span>
-          </div>
-          <p class="cred-text">For coaches, realtors, photographers, consultants, and childcare directors with thriving small businesses they love.</p>
-        </div>
+        <h1 class="letter-hi">Hi, I'm <span class="accent">Kimberly</span>.</h1>
+        <p class="letter-lead">I work with people who've already built something real, and are ready to go back to the foundation.</p>
       </div>
-
-      <div class="hero-photo-wrap">
-        <img src="klohr_headshot.jpg" alt="Kimberly Lohr, Business Architect" class="hero-photo" />
-        <div class="hero-badge">
-          <span class="num">12</span>
-          <span class="label">Weeks to a finished foundation</span>
-        </div>
-      </div>
+      <img src="klohr_headshot.jpg" alt="Kimberly Lohr" class="letter-photo" />
     </div>
-  </div>
-</section>
 
-<!-- BAND -->
-<div class="band">
-  <div class="wrap">
-    <p class="band-line">You built the expertise.<span class="accent">I build everything around it.</span></p>
-  </div>
-</div>
+    <div class="letter-body">
+      <p>Sometimes that means getting the systems right, so the business runs on its purpose instead of running through you. Sometimes it means building a new revenue stream on the ground you've already got.</p>
 
-<!-- AUDIT -->
-<div class="audit-wrap">
-  <div class="wrap">
-    <p class="eyebrow">The Self-Audit</p>
-    <div class="audit-card">
-      <div class="audit-head">
-        <h2 class="audit-h2">The foundation of a business that <span class="accent">holds its own.</span></h2>
-        <div class="audit-counter"><strong id="auditCount">0</strong> / 5 in place</div>
-      </div>
-      <p class="audit-sub">Check what you already have. We'll show you what's missing.</p>
+      <p>Most of the people I work with are experts. Coaches, realtors, photographers, consultants, childcare directors. They've been at this a while. They know their craft cold. What they don't have yet is the thing underneath it — the system that holds the business up when they step back.</p>
 
-      <ul class="audit-list" id="auditList">
-        <li class="audit-item" data-key="playbook" data-title="A playbook your team can run">
-          <div class="audit-box" aria-hidden="true">
-            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="audit-text">
-            <strong>A playbook your team can run.</strong>
-            <span>Your way of working, written down, handed off.</span>
-          </div>
-        </li>
-        <li class="audit-item" data-key="onboarding" data-title="An onboarding that takes care of new clients">
-          <div class="audit-box" aria-hidden="true">
-            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="audit-text">
-            <strong>An onboarding that takes care of new clients.</strong>
-            <span>For new hires or new clients. The first week reflects the standard you built, even when you're not running it.</span>
-          </div>
-        </li>
-        <li class="audit-item" data-key="content" data-title="A content rhythm that keeps publishing on its own">
-          <div class="audit-box" aria-hidden="true">
-            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="audit-text">
-            <strong>A content rhythm that keeps publishing on its own.</strong>
-            <span>Your audience hears from you on a schedule you set once.</span>
-          </div>
-        </li>
-        <li class="audit-item" data-key="delivery" data-title="A delivery process anyone you've trained can run">
-          <div class="audit-box" aria-hidden="true">
-            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="audit-text">
-            <strong>A delivery process anyone you've trained can run.</strong>
-            <span>Same caliber every time, even when the work passes to someone you've trained.</span>
-          </div>
-        </li>
-        <li class="audit-item" data-key="feedback" data-title="A feedback loop that tells you what to build next">
-          <div class="audit-box" aria-hidden="true">
-            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="audit-text">
-            <strong>A feedback loop that tells you what to build next.</strong>
-            <span>Evidence from real use, not guesses from a brainstorm.</span>
-          </div>
-        </li>
-      </ul>
+      <p>That's the part I build. I sit with you, get the way you actually work out of your head, and turn it into something your business runs on. A playbook. A follow-up sequence. A curriculum. A content system. Whatever yours needs. We work together for about a quarter, and you walk away with one finished thing. Built, not just planned.</p>
 
-      <div class="audit-summary" id="auditSummary" aria-live="polite">
-        <p id="auditMessage"></p>
-        <a id="auditCta" class="pill" href="mailto:klohr@foundationforward.com">Start the conversation <span class="arrow">→</span></a>
-      </div>
+      <p>I trained as an instructional designer, which is a plain way of saying I'm good at getting what someone knows out of their head and into something other people can use. The expertise is already there. It just lives in one person.</p>
     </div>
-  </div>
-</div>
 
-<!-- OFFER -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">The Offer</p>
-    <div class="offer-card">
-      <div>
-        <h2>The <span class="accent">Foundation Build</span>.</h2>
-        <p class="steps-inline">Extract · Build · Run.</p>
-        <p class="lede">I sit with you to understand how your work actually works. Then I build the tools and systems that let the routine work hold its own — so your time goes back to what made you start.</p>
-      </div>
-      <div>
-        <ul class="checklist">
-          <li>
-            <span class="tick" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div>
-              <strong>Built from what's in your head</strong>
-              <span>The way you actually work, not someone else's framework.</span>
-            </div>
-          </li>
-          <li>
-            <span class="tick" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div>
-              <strong>A finished artifact, not a strategy deck</strong>
-              <span>A playbook. A 10-week follow-up sequence. A curriculum. A content system.</span>
-            </div>
-          </li>
-          <li>
-            <span class="tick" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.5L8 14.5L16 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div>
-              <strong>One quarterly engagement</strong>
-              <span>Start to finished foundation in roughly 12 weeks. One-on-one.</span>
-            </div>
-          </li>
-        </ul>
-        <p class="offer-foot-italic">If someone else's system was going to work for you, it would have by now.</p>
-        <p class="offer-foot">Not a template. The one that's actually yours.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <p class="letter-emphasis">Not a template. Not someone else's framework. The one that's actually yours.</p>
 
-<!-- ABOUT -->
-<section class="about">
-  <div class="wrap">
-    <p class="eyebrow">The Architect</p>
-    <div class="about-grid">
-      <img src="klohr_headshot.jpg" alt="Kimberly Lohr" class="about-photo" />
-      <div>
-        <h2>Kimberly <span class="accent">Lohr</span>.</h2>
-        <p class="about-role">Business Architect · Foundation Forward Consulting</p>
-        <div class="about-body">
-          <p>I trained as an instructional designer. The job taught me how to sit with an expert and get what they know out of their head and into a working artifact someone else can use.</p>
-          <p>I do that for small business owners now. The expertise is already there. The shape of a business around it is the part that's missing.</p>
-          <p>The question that drives the work: <em>what would your days look like if you got to spend them on the work that made you start?</em></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    <p class="letter-close">If you're at one of those two moments, I'd love to hear what you're building.</p>
 
-<!-- CLOSING -->
-<section class="closing">
-  <div class="wrap">
-    <h2>Ready to <span class="accent">get back to it?</span></h2>
-    <p>One conversation to see if it's a fit. No pitch. No deck.</p>
     <a href="mailto:klohr@foundationforward.com" class="pill">klohr@foundationforward.com <span class="arrow">→</span></a>
   </div>
 </section>
@@ -888,72 +278,6 @@
     <span>© 2026 · <a href="mailto:klohr@foundationforward.com">klohr@foundationforward.com</a></span>
   </div>
 </footer>
-
-<script>
-  (function () {
-    const items = Array.from(document.querySelectorAll('.audit-item'));
-    const counter = document.getElementById('auditCount');
-    const summary = document.getElementById('auditSummary');
-    const message = document.getElementById('auditMessage');
-    const cta = document.getElementById('auditCta');
-
-    function lower(s) { return s.charAt(0).toLowerCase() + s.slice(1); }
-
-    function update() {
-      const checked = items.filter(i => i.classList.contains('checked'));
-      const missing = items.filter(i => !i.classList.contains('checked'));
-      counter.textContent = String(checked.length);
-
-      const interacted = items.some(i => i.dataset.touched === '1');
-      if (!interacted) {
-        summary.classList.remove('show');
-        return;
-      }
-
-      const titles = missing.map(m => m.dataset.title);
-      let text = '';
-      let subject = 'Foundation Build — let’s talk';
-
-      if (missing.length === 0) {
-        text = 'You’ve got the foundation. Want me to pressure-test it? Let’s talk.';
-        subject = 'Foundation Build — pressure-testing what I have';
-      } else if (missing.length === 1) {
-        text = 'You’re one piece away. The missing piece is ' + lower(titles[0]) + '. Let’s build it.';
-        subject = 'Foundation Build — missing: ' + titles[0];
-      } else if (missing.length === 2) {
-        text = 'Two pieces missing: ' + lower(titles[0]) + ', and ' + lower(titles[1]) + '. Let’s build them.';
-        subject = 'Foundation Build — missing: ' + titles.join('; ');
-      } else {
-        text = 'You’re holding the whole business up right now. Let’s build the foundation underneath it — so you get to do the parts you actually love.';
-        subject = 'Foundation Build — missing: ' + titles.join('; ');
-      }
-
-      message.textContent = text;
-      cta.setAttribute('href', 'mailto:klohr@foundationforward.com?subject=' + encodeURIComponent(subject));
-      summary.classList.add('show');
-    }
-
-    items.forEach(item => {
-      item.setAttribute('role', 'button');
-      item.setAttribute('tabindex', '0');
-      item.setAttribute('aria-pressed', 'false');
-
-      item.addEventListener('click', function () {
-        item.dataset.touched = '1';
-        item.classList.toggle('checked');
-        item.setAttribute('aria-pressed', item.classList.contains('checked') ? 'true' : 'false');
-        update();
-      });
-
-      item.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          item.click();
-        }
-      });
-    });
-  })();
-</script>
 
 </body>
 </html>
